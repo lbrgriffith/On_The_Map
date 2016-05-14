@@ -8,19 +8,18 @@
 
 import UIKit
 
-// MARK: - Constants
+// MARK: - Udacity Constants
 
 struct Constants {
-    
-    // MARK: TMDB
+    // MARK: Udacity
     struct Udacity {
         static let ApiScheme = "https"
         static let ApiHost = "www.udacity.com"
         static let ApiPath = "/api/session"
     }
     
-    // MARK: TMDB Parameter Keys
-    struct TMDBParameterKeys {
+    // MARK: Udacity Parameter Keys
+    struct UdacityParameterKeys {
         static let ApiKey = "api_key"
         static let RequestToken = "request_token"
         static let SessionID = "session_id"
@@ -28,13 +27,8 @@ struct Constants {
         static let Password = "password"
     }
     
-    // MARK: TMDB Parameter Values
-    struct TMDBParameterValues {
-        static let ApiKey = "4e8bdccc3bb63cefbec21f936eca5651"
-    }
-    
-    // MARK: TMDB Response Keys
-    struct TMDBResponseKeys {
+    // MARK: Udacity Response Keys
+    struct UdacityResponseKeys {
         static let Title = "title"
         static let ID = "id"
         static let PosterPath = "poster_path"
