@@ -31,45 +31,58 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEj-Fz-gSQ">
-                                <rect key="frame" x="20" y="296" width="560" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.40236513871518509" blue="0.095793515614977398" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Login"/>
-                                <connections>
-                                    <action selector="login:" destination="XNX-eK-nGW" eventType="touchUpInside" id="qXX-3C-jOQ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3z-pW-6xi">
                                 <rect key="frame" x="222" y="182" width="157" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3z-mG-Jgm">
+                                <rect key="frame" x="20" y="369" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6w-Sj-3Fp">
+                                <rect key="frame" x="20" y="296" width="560" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.2656828724473892" blue="0.077824702757211539" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="login:" destination="XNX-eK-nGW" eventType="touchUpInside" id="S5P-Gu-HDa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="F3z-mG-Jgm" firstAttribute="top" secondItem="ax1-Cq-ajQ" secondAttribute="bottom" constant="-231" id="2M6-SW-4zS"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="centerX" secondItem="ax1-Cq-ajQ" secondAttribute="centerX" id="3y6-Cz-qva"/>
                             <constraint firstItem="yGs-iG-gw0" firstAttribute="trailing" secondItem="ax1-Cq-ajQ" secondAttribute="trailing" constant="-20" id="A3U-NM-FnL"/>
+                            <constraint firstItem="E6w-Sj-3Fp" firstAttribute="leading" secondItem="yGs-iG-gw0" secondAttribute="leading" id="Bib-Ex-5Wd"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="top" secondItem="I3z-pW-6xi" secondAttribute="bottom" constant="14" id="Cef-G9-dTq"/>
-                            <constraint firstItem="hEj-Fz-gSQ" firstAttribute="leading" secondItem="yGs-iG-gw0" secondAttribute="leading" id="Gee-Yl-drT"/>
+                            <constraint firstItem="E6w-Sj-3Fp" firstAttribute="top" secondItem="yGs-iG-gw0" secondAttribute="bottom" constant="8" symbolic="YES" id="N8b-X6-wBD"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="leading" secondItem="8bj-Au-Tnw" secondAttribute="leadingMargin" id="Owk-ci-ckP"/>
+                            <constraint firstItem="F3z-mG-Jgm" firstAttribute="leading" secondItem="ax1-Cq-ajQ" secondAttribute="trailing" constant="-580" id="PKl-5e-2Dl"/>
                             <constraint firstItem="UTm-29-h2V" firstAttribute="top" secondItem="ax1-Cq-ajQ" secondAttribute="bottom" id="R3T-bF-wej"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ax1-Cq-ajQ" secondAttribute="trailing" constant="-20" id="RWt-Xa-sVh"/>
+                            <constraint firstItem="E6w-Sj-3Fp" firstAttribute="trailing" secondItem="F3z-mG-Jgm" secondAttribute="trailing" id="RdY-U9-HDP"/>
                             <constraint firstItem="yGs-iG-gw0" firstAttribute="top" secondItem="aGY-N3-kJp" secondAttribute="bottom" constant="8" symbolic="YES" id="Wzw-Qo-voq"/>
                             <constraint firstItem="yGs-iG-gw0" firstAttribute="leading" secondItem="aGY-N3-kJp" secondAttribute="leading" id="XMG-nX-1dH"/>
-                            <constraint firstItem="hEj-Fz-gSQ" firstAttribute="top" secondItem="yGs-iG-gw0" secondAttribute="bottom" constant="8" symbolic="YES" id="aDE-Ch-zYS"/>
                             <constraint firstItem="I3z-pW-6xi" firstAttribute="centerX" secondItem="8bj-Au-Tnw" secondAttribute="centerX" id="acm-YP-mbp"/>
                             <constraint firstItem="ax1-Cq-ajQ" firstAttribute="leading" secondItem="8bj-Au-Tnw" secondAttribute="leadingMargin" constant="-20" id="bzb-q3-O4g"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="top" secondItem="yQT-lB-ldR" secondAttribute="bottom" constant="200" id="dWt-sk-yH0"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="width" secondItem="ax1-Cq-ajQ" secondAttribute="width" constant="-40" id="euZ-z7-cql"/>
                             <constraint firstItem="ax1-Cq-ajQ" firstAttribute="top" secondItem="8bj-Au-Tnw" secondAttribute="topMargin" id="fio-nn-06w"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="trailing" secondItem="8bj-Au-Tnw" secondAttribute="trailingMargin" id="iSW-Ll-JEh"/>
-                            <constraint firstItem="hEj-Fz-gSQ" firstAttribute="trailing" secondItem="yGs-iG-gw0" secondAttribute="trailing" id="kVM-4S-yRC"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="leading" secondItem="ax1-Cq-ajQ" secondAttribute="trailing" constant="-580" id="oUD-Va-7x5"/>
+                            <constraint firstItem="E6w-Sj-3Fp" firstAttribute="trailing" secondItem="yGs-iG-gw0" secondAttribute="trailing" id="t3U-QL-MIv"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="height" secondItem="yGs-iG-gw0" secondAttribute="height" id="xDg-Cv-EMg"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="messagesField" destination="F3z-mG-Jgm" id="Poq-wV-tZv"/>
                         <outlet property="passwordField" destination="yGs-iG-gw0" id="66y-O7-qav"/>
                         <outlet property="usernameField" destination="aGY-N3-kJp" id="xQp-wh-f97"/>
                     </connections>

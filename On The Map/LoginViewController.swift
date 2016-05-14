@@ -14,6 +14,7 @@ class LoginViewController : UIViewController {
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var messagesField: UILabel!
     
     var session: NSURLSession!
     
@@ -30,12 +31,15 @@ class LoginViewController : UIViewController {
     }
     
     @IBAction func login(sender: AnyObject) {
+        if (usernameField.text != "" && passwordField.text != "") {
+            getSessionID()
+        }
+        else {
+            messagesField.text = "You must enter both username and password!"
+        }
     }
     
-    private func getSessionID(requestToken: String) {
-        
-        /* TASK: Get a session ID, then store it (appDelegate.sessionID) and get the user's id */
-        
+    private func getSessionID() {
         /* 1. Set the parameters */
         var Client = UdacityClient()
         
@@ -57,10 +61,6 @@ class LoginViewController : UIViewController {
             // if an error occurs, print it and re-enable the UI
             func displayError(error: String, debugLabelText: String? = nil) {
                 print(error)
-//                performUIUpdatesOnMain {
-//                    self.setUIEnabled(true)
-//                    self.debugTextLabel.text = "Login Failed (Session ID)."
-//                }
             }
             
             /* GUARD: Was there an error? */
@@ -82,29 +82,10 @@ class LoginViewController : UIViewController {
             }
             
             /* 5. Parse the data */
-            let parsedResult: AnyObject!
-            do {
-                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-            } catch {
-                displayError("Could not parse the data as JSON: '\(data)'")
-                return
-            }
-            
-            /* GUARD: Did TheMovieDB return an error? */
-            if let _ = parsedResult[Constants.TMDBResponseKeys.StatusCode] as? Int {
-                displayError("TheMovieDB returned an error. See the '\(Constants.TMDBResponseKeys.StatusCode)' and '\(Constants.TMDBResponseKeys.StatusMessage)' in \(parsedResult)")
-                return
-            }
-            
-            /* GUARD: Is the "sessionID" key in parsedResult? */
-            guard let sessionID = parsedResult[Constants.TMDBResponseKeys.SessionID] as? String else {
-                displayError("Cannot find key '\(Constants.TMDBResponseKeys.SessionID)' in \(parsedResult)")
-                return
-            }
-            
-            /* 6. Use the data! */
-            //self.appDelegate.sessionID = sessionID
-            //self.getUserID(self.appDelegate.sessionID!)
+            //parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+
         }
         
         /* 7. Start the request */
