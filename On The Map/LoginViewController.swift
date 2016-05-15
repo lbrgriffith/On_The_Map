@@ -50,10 +50,22 @@ class LoginViewController : UIViewController {
         components.path = Constants.Udacity.ApiPath
         let request = NSMutableURLRequest(URL: components.URL!)
         
+        var username = ""
+        var password = ""
+        
+        if let optionalUsername = usernameField.text {
+            username = "\(optionalUsername)"
+        }
+        if let optionalPassword = passwordField.text {
+            password = "\(optionalPassword)"
+        }
+        
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = "{\"udacity\": {\"username\": \"\(usernameField.text)\", \"password\": \"\(passwordField.text)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
+        
+        print("{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}")
         
         /* 4. Make the request */
         let task = Client.session.dataTaskWithRequest(request) { (data, response, error) in
@@ -65,7 +77,7 @@ class LoginViewController : UIViewController {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                displayError("There was an error with your request: \(error)")
+                self.messagesField.text = "There was an error with your request: \(error)"
                 return
             }
             
@@ -74,6 +86,8 @@ class LoginViewController : UIViewController {
                 displayError("Your request returned a status code other than 2xx!")
                 return
             }
+            
+            print((response as? NSHTTPURLResponse)?.statusCode)
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
