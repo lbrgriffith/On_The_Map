@@ -11,6 +11,20 @@ import UIKit
 // MARK: - Udacity Constants
 
 struct Constants {
+    // MARK: General app constants
+    struct Messages {
+        static let MissingUsernameAndPassword = "You must enter both username and password!"
+    }
+    
+    // MARK: General
+    struct URLRequest {
+        static let MethodPOST = "POST"
+        static let MethodGET = "GET"
+        static let ApplicationTypeJSON = "application/json"
+        static let Accept = "Accept"
+        static let ContentType = "Content-Type"
+    }
+    
     // MARK: Udacity
     struct Udacity {
         static let ApiScheme = "https"

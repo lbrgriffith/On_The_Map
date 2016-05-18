@@ -15,9 +15,10 @@ class UdacityClient : NSObject {
     var session = NSURLSession.sharedSession()
     
     // authentication state
-    var requestToken: String? = nil
+    var accountRegistered: Bool? = nil
+    var accountKey: String? = nil
     var sessionID: String? = nil
-    var userID: Int? = nil
+    var sessionExpiration: NSDate? = nil
     
     // MARK: Initializers
     
@@ -32,5 +33,76 @@ class UdacityClient : NSObject {
             static var sharedInstance = UdacityClient()
         }
         return Singleton.sharedInstance
+    }
+    
+    // MARK: Login
+    func getSessionID(username: String, password: String) {
+        /* 1/2. Build the URL, Configure the request */
+        let components = NSURLComponents()
+        components.scheme = Constants.Udacity.ApiScheme
+        components.host = Constants.Udacity.ApiHost
+        components.path = Constants.Udacity.ApiPath
+        let request = NSMutableURLRequest(URL: components.URL!)
+        
+        request.HTTPMethod = Constants.URLRequest.MethodPOST
+        request.addValue(Constants.URLRequest.ApplicationTypeJSON, forHTTPHeaderField: Constants.URLRequest.Accept)
+        request.addValue(Constants.URLRequest.ApplicationTypeJSON, forHTTPHeaderField: Constants.URLRequest.ContentType)
+        request.HTTPBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
+        
+        /* 3. Make the request */
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            
+            // if an error occurs, print it and re-enable the UI
+            func displayError(error: String, debugLabelText: String? = nil) {
+                print(error)
+            }
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                displayError("There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                displayError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                displayError("No data was returned by the request!")
+                return
+            }
+            
+            /* 4. Parse the data */
+            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+            
+            /* GUARD: Are the "photos" and "photo" keys in our result? */
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
+            } catch {
+                displayError("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
+            print (parsedResult)
+        }
+        
+        /* 5. Start the request */
+        task.resume()
+    }
+    
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+            do {
+                return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return nil
     }
 }
