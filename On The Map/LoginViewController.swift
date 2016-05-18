@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class LoginViewController : UIViewController {
+    
+    // Properties
+    var keyboardOnScreen = false
+    
     // MARK: Storyboard References
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -23,11 +27,17 @@ class LoginViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
+        
+        subscribeToNotification(UIKeyboardWillShowNotification, selector: Constants.Selectors.KeyboardWillShow)
+        subscribeToNotification(UIKeyboardWillHideNotification, selector: Constants.Selectors.KeyboardWillHide)
+        subscribeToNotification(UIKeyboardDidShowNotification, selector: Constants.Selectors.KeyboardDidShow)
+        subscribeToNotification(UIKeyboardDidHideNotification, selector: Constants.Selectors.KeyboardDidHide)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        unsubscribeFromAllNotifications()
     }
     
     // MARK: Actions
@@ -61,6 +71,94 @@ class LoginViewController : UIViewController {
         if let errorString = errorString {
             messagesField.text = errorString
         }
+    }
+}
+
+// MARK: - LoginViewController: UITextFieldDelegate
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    // MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: Show/Hide Keyboard
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if !keyboardOnScreen {
+            view.frame.origin.y -= keyboardHeight(notification)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if keyboardOnScreen {
+            view.frame.origin.y += keyboardHeight(notification)
+        }
+    }
+    
+    func keyboardDidShow(notification: NSNotification) {
+        keyboardOnScreen = true
+    }
+    
+    func keyboardDidHide(notification: NSNotification) {
+        keyboardOnScreen = false
+    }
+    
+    private func keyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.CGRectValue().height
+    }
+    
+    private func resignIfFirstResponder(textField: UITextField) {
+        if textField.isFirstResponder() {
+            textField.resignFirstResponder()
+        }
+    }
+}
+
+// MARK: - LoginViewController (Configure UI)
+
+extension LoginViewController {
+    private func configureUI() {
+        
+        // configure background gradient
+        let backgroundGradient = CAGradientLayer()
+        backgroundGradient.locations = [0.0, 1.0]
+        backgroundGradient.frame = view.frame
+        view.layer.insertSublayer(backgroundGradient, atIndex: 0)
+        
+        configureTextField(usernameField)
+        configureTextField(passwordField)
+    }
+    
+    private func configureTextField(textField: UITextField) {
+        let textFieldPaddingViewFrame = CGRectMake(0.0, 0.0, 13.0, 0.0)
+        let textFieldPaddingView = UIView(frame: textFieldPaddingViewFrame)
+        textField.leftView = textFieldPaddingView
+        textField.leftViewMode = .Always
+        textField.delegate = self
+    }
+    
+    @IBAction func userDidTapView(sender: AnyObject) {
+        resignIfFirstResponder(usernameField)
+        resignIfFirstResponder(passwordField)
+    }
+}
+
+// MARK: - LoginViewController (Notifications)
+
+extension LoginViewController {
+    
+    private func subscribeToNotification(notification: String, selector: Selector) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: selector, name: notification, object: nil)
+    }
+    
+    private func unsubscribeFromAllNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }
 

@@ -54,4 +54,12 @@ struct Constants {
         static let UserID = "id"
         static let Results = "results"
     }
+    
+    // MARK: Selectors
+    struct Selectors {
+        static let KeyboardWillShow: Selector = Selector("keyboardWillShow:")
+        static let KeyboardWillHide: Selector = Selector("keyboardWillHide:")
+        static let KeyboardDidShow: Selector = Selector("keyboardDidShow:")
+        static let KeyboardDidHide: Selector = Selector("keyboardDidHide:")
+    }
 }

@@ -20,6 +20,10 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage_U_2" translatesAutoresizingMaskIntoConstraints="NO" id="ax1-Cq-ajQ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="OMR-9S-kPz" appends="YES" id="rZf-Ta-Fhb"/>
+                                </connections>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aGY-N3-kJp">
                                 <rect key="frame" x="20" y="220" width="560" height="30"/>
@@ -70,24 +74,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="E6w-Sj-3Fp" firstAttribute="leading" secondItem="F3z-mG-Jgm" secondAttribute="leading" id="2tI-1B-SSZ"/>
-                            <constraint firstItem="I3z-pW-6xi" firstAttribute="top" secondItem="yQT-lB-ldR" secondAttribute="bottom" constant="162" id="AwX-hN-can"/>
+                            <constraint firstItem="ax1-Cq-ajQ" firstAttribute="bottom" secondItem="UTm-29-h2V" secondAttribute="top" id="91Z-HS-bXn"/>
                             <constraint firstItem="yGs-iG-gw0" firstAttribute="trailing" secondItem="E6w-Sj-3Fp" secondAttribute="trailing" id="DEF-l3-uCT"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="leading" secondItem="yGs-iG-gw0" secondAttribute="leading" id="DII-rY-zV7"/>
+                            <constraint firstItem="I3z-pW-6xi" firstAttribute="top" secondItem="yQT-lB-ldR" secondAttribute="bottom" constant="162" id="FGH-dy-Hv0"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="leading" secondItem="8bj-Au-Tnw" secondAttribute="leadingMargin" id="Oge-pb-8L8"/>
                             <constraint firstItem="yGs-iG-gw0" firstAttribute="top" secondItem="aGY-N3-kJp" secondAttribute="bottom" constant="8" symbolic="YES" id="Oig-mv-PD8"/>
                             <constraint firstAttribute="trailing" secondItem="ax1-Cq-ajQ" secondAttribute="trailing" id="SIl-ol-5Rb"/>
                             <constraint firstItem="yGs-iG-gw0" firstAttribute="leading" secondItem="E6w-Sj-3Fp" secondAttribute="leading" id="UPd-yL-Cuf"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="trailing" secondItem="yGs-iG-gw0" secondAttribute="trailing" id="W15-Tx-pZj"/>
-                            <constraint firstItem="ax1-Cq-ajQ" firstAttribute="bottom" secondItem="UTm-29-h2V" secondAttribute="top" id="c2A-vK-8pO"/>
                             <constraint firstItem="ax1-Cq-ajQ" firstAttribute="centerX" secondItem="yGs-iG-gw0" secondAttribute="centerX" id="d4j-HG-PBs"/>
                             <constraint firstItem="F3z-mG-Jgm" firstAttribute="top" secondItem="E6w-Sj-3Fp" secondAttribute="bottom" constant="43" id="fQS-UB-JCP"/>
                             <constraint firstItem="I3z-pW-6xi" firstAttribute="centerX" secondItem="aGY-N3-kJp" secondAttribute="centerX" id="gJV-SC-aPh"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="top" secondItem="I3z-pW-6xi" secondAttribute="bottom" constant="14" id="iqi-2a-IpN"/>
-                            <constraint firstItem="UTm-29-h2V" firstAttribute="top" secondItem="F3z-mG-Jgm" secondAttribute="bottom" constant="166" id="o3d-BT-LWb"/>
                             <constraint firstItem="E6w-Sj-3Fp" firstAttribute="trailing" secondItem="F3z-mG-Jgm" secondAttribute="trailing" id="ojm-EG-aui"/>
                             <constraint firstItem="ax1-Cq-ajQ" firstAttribute="top" secondItem="8bj-Au-Tnw" secondAttribute="top" id="tMB-D9-cPg"/>
                             <constraint firstItem="E6w-Sj-3Fp" firstAttribute="top" secondItem="yGs-iG-gw0" secondAttribute="bottom" constant="8" symbolic="YES" id="up3-f2-fUU"/>
                             <constraint firstItem="ax1-Cq-ajQ" firstAttribute="leading" secondItem="8bj-Au-Tnw" secondAttribute="leading" id="xgm-oS-w53"/>
+                            <constraint firstItem="UTm-29-h2V" firstAttribute="top" secondItem="F3z-mG-Jgm" secondAttribute="bottom" constant="166" id="yPc-XE-xdH"/>
                         </constraints>
                     </view>
                     <connections>
@@ -97,6 +101,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKn-HC-X6X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="OMR-9S-kPz">
+                    <connections>
+                        <action selector="userDidTapView:" destination="XNX-eK-nGW" id="97r-70-Sm4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1424" y="1048"/>
         </scene>

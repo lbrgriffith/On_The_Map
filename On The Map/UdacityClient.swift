@@ -77,7 +77,6 @@ class UdacityClient : NSObject {
             
             /* 4. Parse the data */
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             
             /* GUARD: Are the "photos" and "photo" keys in our result? */
             let parsedResult: AnyObject!
@@ -88,7 +87,14 @@ class UdacityClient : NSObject {
                 return
             }
             
-            print (parsedResult)
+            print(parsedResult.stringValue)
+            
+            // Convert String to a Dictionary
+            let sessionDictionary = self.convertStringToDictionary(parsedResult.stringValue)
+
+            // Get the session ID from the Dictionary
+            self.sessionID = sessionDictionary!["id"]?.value
+            print(self.sessionID)
         }
         
         /* 5. Start the request */
