@@ -43,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D9CC9CA1CEE581900F1BA99 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DBF79221CE3F38D00DD9B2A /* Main.storyboard */,
+				5DBF79271CE3F38D00DD9B2A /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		5DBF79121CE3F38D00DD9B2A = {
 			isa = PBXGroup;
 			children = (
@@ -62,14 +71,13 @@
 		5DBF791D1CE3F38D00DD9B2A /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
+				5DC08A051CE54C920059E39F /* Model */,
+				5D9CC9CA1CEE581900F1BA99 /* View */,
+				5DC08A021CE54BCE0059E39F /* Controllers */,
 				5DBF791E1CE3F38D00DD9B2A /* AppDelegate.swift */,
 				5D3844791CE894B300414118 /* GCDBlackBox.swift */,
-				5DBF79221CE3F38D00DD9B2A /* Main.storyboard */,
 				5DBF79251CE3F38D00DD9B2A /* Assets.xcassets */,
-				5DBF79271CE3F38D00DD9B2A /* LaunchScreen.storyboard */,
 				5DBF792A1CE3F38D00DD9B2A /* Info.plist */,
-				5DC08A051CE54C920059E39F /* Model */,
-				5DC08A021CE54BCE0059E39F /* Controllers */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";
