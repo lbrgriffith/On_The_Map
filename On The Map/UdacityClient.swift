@@ -17,7 +17,7 @@ class UdacityClient : NSObject {
     // authentication state
     var accountRegistered: Bool = false
     var accountKey: String = ""
-    var sessionID: String? = nil
+    var sessionID: String = ""
     var sessionExpiration: NSDate? = nil
     
     // MARK: Initializers
@@ -87,8 +87,9 @@ class UdacityClient : NSObject {
                 return
             }
             
-            if let accountInformation = parsedResult["account"] as? [String:AnyObject] {
-                    let registered = accountInformation["registered"] as! Int
+            // Parse the account information
+            if let accountInformation = parsedResult[Constants.UdacitySessionResult.Account] as? [String:AnyObject] {
+                    let registered = accountInformation[Constants.UdacitySessionResult.Registered] as! Int
                         if (registered == 1) {
                             self.accountRegistered = true
                         }
@@ -96,8 +97,14 @@ class UdacityClient : NSObject {
                             self.accountRegistered = false
                         }
                     
-                    self.accountKey = (accountInformation["key"] as? String)!
-                print(self.accountKey)
+                    self.accountKey = (accountInformation[Constants.UdacitySessionResult.Key] as? String)!
+            }
+            
+            // Parse the Session information.
+            if let accountInformation = parsedResult[Constants.UdacitySessionResult.Session] as? [String:AnyObject] {
+                let registered = accountInformation[Constants.UdacitySessionResult.Id] as! String
+                self.sessionID = registered
+                self.sessionExpiration = (accountInformation[Constants.UdacitySessionResult.Expiration] as? NSDate)!
             }
         }
         
