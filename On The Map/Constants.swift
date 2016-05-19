@@ -40,6 +40,8 @@ struct Constants {
         static let Session = "session"
         static let Id = "id"
         static let Expiration = "expiration"
+        static let MinimumSuccessCode = 200
+        static let MaximumSuccessCode = 299
     }
     
     // MARK: Selectors

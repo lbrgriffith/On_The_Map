@@ -11,14 +11,14 @@ import Foundation
 class UdacityClient : NSObject {
     // MARK: Properties
     
-    // shared session
-    var session = NSURLSession.sharedSession()
-    
     // authentication state
     var accountRegistered: Bool = false
     var accountKey: String = ""
     var sessionID: String = ""
     var sessionExpiration: NSDate? = nil
+    
+    // shared session
+    var session = NSURLSession.sharedSession()
     
     // MARK: Initializers
     
@@ -64,7 +64,7 @@ class UdacityClient : NSObject {
             }
             
             /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= Constants.UdacitySessionResult.MinimumSuccessCode && statusCode <= Constants.UdacitySessionResult.MaximumSuccessCode else {
                 displayError("Your request returned a status code other than 2xx!")
                 return
             }
@@ -110,16 +110,5 @@ class UdacityClient : NSObject {
         
         /* 5. Start the request */
         task.resume()
-    }
-    
-    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
-        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
-            do {
-                return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
-            } catch let error as NSError {
-                print(error)
-            }
-        }
-        return nil
     }
 }
