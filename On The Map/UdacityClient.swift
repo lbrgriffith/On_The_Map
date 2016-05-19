@@ -15,8 +15,8 @@ class UdacityClient : NSObject {
     var session = NSURLSession.sharedSession()
     
     // authentication state
-    var accountRegistered: Bool? = nil
-    var accountKey: String? = nil
+    var accountRegistered: Bool = false
+    var accountKey: String = ""
     var sessionID: String? = nil
     var sessionExpiration: NSDate? = nil
     
@@ -87,14 +87,18 @@ class UdacityClient : NSObject {
                 return
             }
             
-            print(parsedResult.stringValue)
-            
-            // Convert String to a Dictionary
-            let sessionDictionary = self.convertStringToDictionary(parsedResult.stringValue)
-
-            // Get the session ID from the Dictionary
-            self.sessionID = sessionDictionary!["id"]?.value
-            print(self.sessionID)
+            if let accountInformation = parsedResult["account"] as? [String:AnyObject] {
+                    let registered = accountInformation["registered"] as! Int
+                        if (registered == 1) {
+                            self.accountRegistered = true
+                        }
+                        else {
+                            self.accountRegistered = false
+                        }
+                    
+                    self.accountKey = (accountInformation["key"] as? String)!
+                print(self.accountKey)
+            }
         }
         
         /* 5. Start the request */
