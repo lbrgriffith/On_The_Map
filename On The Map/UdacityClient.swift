@@ -36,7 +36,9 @@ class UdacityClient : NSObject {
     }
     
     // MARK: Login
-    func getSessionID(username: String, password: String) {
+    func getSessionID(username: String, password: String) -> Bool {
+        var success = false;
+        
         /* 1/2. Build the URL, Configure the request */
         let components = NSURLComponents()
         components.scheme = Constants.Udacity.ApiScheme
@@ -60,19 +62,19 @@ class UdacityClient : NSObject {
             /* GUARD: Was there an error? */
             guard (error == nil) else {
                 displayError("There was an error with your request: \(error)")
-                return
+                return;
             }
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= Constants.UdacitySessionResult.MinimumSuccessCode && statusCode <= Constants.UdacitySessionResult.MaximumSuccessCode else {
                 displayError("Your request returned a status code other than 2xx!")
-                return
+                return;
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
                 displayError("No data was returned by the request!")
-                return
+                return;
             }
             
             /* 4. Parse the data */
@@ -105,10 +107,14 @@ class UdacityClient : NSObject {
                 let registered = accountInformation[Constants.UdacitySessionResult.Id] as! String
                 self.sessionID = registered
                 self.sessionExpiration = (accountInformation[Constants.UdacitySessionResult.Expiration] as? NSDate)!
+                
+                success = true;
             }
         }
         
         /* 5. Start the request */
         task.resume()
+        
+        return success;
     }
 }

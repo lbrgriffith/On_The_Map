@@ -58,7 +58,9 @@ class LoginViewController : UIViewController {
             }
             
             /* 2. Get a session Id from udacity by using the user's login credentials */
-            Client.getSessionID(username, password: password)
+            if (Client.getSessionID(username, password: password)) {
+                completeLogin()
+            }
         }
         else {
             messagesField.text = Constants.Messages.MissingUsernameAndPassword
@@ -71,6 +73,14 @@ class LoginViewController : UIViewController {
         if let errorString = errorString {
             messagesField.text = errorString
         }
+    }
+    
+    // MARK: Login
+    
+    private func completeLogin() {
+        messagesField.text = ""
+        let controller = storyboard!.instantiateViewControllerWithIdentifier("ManagerNavigationController") as! UINavigationController
+        presentViewController(controller, animated: true, completion: nil)
     }
 }
 
