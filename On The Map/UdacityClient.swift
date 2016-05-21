@@ -15,7 +15,7 @@ class UdacityClient : NSObject {
     var accountRegistered: Bool = false
     var accountKey: String = ""
     var sessionID: String = ""
-    var sessionExpiration: NSDate? = nil
+    var sessionExpiration: NSDate!
     
     // shared session
     var session = NSURLSession.sharedSession()
@@ -106,7 +106,10 @@ class UdacityClient : NSObject {
             if let accountInformation = parsedResult[Constants.UdacitySessionResult.Session] as? [String:AnyObject] {
                 let registered = accountInformation[Constants.UdacitySessionResult.Id] as! String
                 self.sessionID = registered
-                self.sessionExpiration = (accountInformation[Constants.UdacitySessionResult.Expiration] as? NSDate)!
+                
+                let DateFormatter = NSDateFormatter()
+                DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+                self.sessionExpiration = DateFormatter.dateFromString(accountInformation[Constants.UdacitySessionResult.Expiration]! as! String)
                 
                 success = true;
             }

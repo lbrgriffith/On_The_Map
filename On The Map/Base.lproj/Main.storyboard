@@ -107,28 +107,67 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="980" y="1008"/>
+            <point key="canvasLocation" x="817" y="862"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="HE9-lz-Rru">
+        <!--Item 2-->
+        <scene sceneID="Yth-s2-2hA">
             <objects>
-                <viewController id="2A2-tL-re4" sceneMemberID="viewController">
+                <viewController id="ef6-Lf-xeK" customClass="ListViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SbP-SF-fol"/>
-                        <viewControllerLayoutGuide type="bottom" id="1dd-y6-g9f"/>
+                        <viewControllerLayoutGuide type="top" id="hOz-zC-IcS"/>
+                        <viewControllerLayoutGuide type="bottom" id="et4-dw-kit"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="FEU-pr-Xpi">
+                    <view key="view" contentMode="scaleToFill" id="g6P-Vb-6nP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="lT2-sF-Wai"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gkf-Fz-xSE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cUO-sT-WgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1765" y="1011"/>
+            <point key="canvasLocation" x="2245" y="1214"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="MFh-gn-WAn">
+            <objects>
+                <viewController id="rIe-jG-aQV" customClass="MapViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mjA-Te-sCj"/>
+                        <viewControllerLayoutGuide type="bottom" id="iZh-A7-CLh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TTz-pC-8Ok">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" selectedImage="OnTheMap_120" id="jbL-eb-W3m"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LBf-pV-TwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2245" y="545"/>
+        </scene>
+        <!--On The Map-->
+        <scene sceneID="pxS-M7-ZoO">
+            <objects>
+                <tabBarController storyboardIdentifier="StudentInformationView" title="On The Map" id="P67-qB-cFu" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="vrp-8r-E4q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="rIe-jG-aQV" kind="relationship" relationship="viewControllers" id="pFC-vQ-mgF"/>
+                        <segue destination="ef6-Lf-xeK" kind="relationship" relationship="viewControllers" id="ZxU-et-EYa"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Fc-lp-0VA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1508" y="862"/>
         </scene>
     </scenes>
     <resources>
         <image name="LaunchImage_U_2" width="1536" height="2048"/>
+        <image name="OnTheMap_120" width="120" height="120"/>
     </resources>
 </document>
