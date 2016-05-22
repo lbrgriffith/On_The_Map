@@ -18,6 +18,7 @@
 		5DBF79291CE3F38D00DD9B2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DBF79271CE3F38D00DD9B2A /* LaunchScreen.storyboard */; };
 		5DBF79311CE3F6B700DD9B2A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBF79301CE3F6B700DD9B2A /* LoginViewController.swift */; };
 		5DC08A041CE54BF10059E39F /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC08A031CE54BF10059E39F /* UdacityClient.swift */; };
+		5DDEEB271CF1F0D700E99A98 /* UdacityAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDEEB261CF1F0D700E99A98 /* UdacityAppUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		5DBF792A1CE3F38D00DD9B2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DBF79301CE3F6B700DD9B2A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5DC08A031CE54BF10059E39F /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		5DDEEB261CF1F0D700E99A98 /* UdacityAppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAppUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				5DC08A031CE54BF10059E39F /* UdacityClient.swift */,
 				5D84D85D1CE6948900DC84CA /* StudentInformation.swift */,
 				5D6695D31CE6B4B900C7C1EA /* Constants.swift */,
+				5DDEEB261CF1F0D700E99A98 /* UdacityAppUser.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DC08A041CE54BF10059E39F /* UdacityClient.swift in Sources */,
+				5DDEEB271CF1F0D700E99A98 /* UdacityAppUser.swift in Sources */,
 				5DBF79311CE3F6B700DD9B2A /* LoginViewController.swift in Sources */,
 				5D84D85E1CE6948900DC84CA /* StudentInformation.swift in Sources */,
 				5DBF791F1CE3F38D00DD9B2A /* AppDelegate.swift in Sources */,
