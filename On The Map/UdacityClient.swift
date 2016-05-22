@@ -36,9 +36,7 @@ class UdacityClient : NSObject {
     }
     
     // MARK: Login
-    func getSessionID(username: String, password: String) -> Bool {
-        var success = false;
-        
+    func getSessionID(username: String, password: String) {       
         /* 1/2. Build the URL, Configure the request */
         let components = NSURLComponents()
         components.scheme = Constants.Udacity.ApiScheme
@@ -110,14 +108,10 @@ class UdacityClient : NSObject {
                 let DateFormatter = NSDateFormatter()
                 DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
                 self.sessionExpiration = DateFormatter.dateFromString(accountInformation[Constants.UdacitySessionResult.Expiration]! as! String)
-                
-                success = true;
             }
         }
         
         /* 5. Start the request */
         task.resume()
-        
-        return success;
     }
 }

@@ -6,9 +6,22 @@
 //  Copyright © 2016 DeveloperPlay. All rights reserved.
 //
 
-import Foundation
+import MapKit
+import AddressBook
 import UIKit
 
 class MapViewController : UIViewController {
     
+    @IBOutlet var studentMap: MKMapView!
+    
+    // MARK: View Functions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    // MARK: Map Methods
+    func getUserLocation () {
+        
+    }
 }

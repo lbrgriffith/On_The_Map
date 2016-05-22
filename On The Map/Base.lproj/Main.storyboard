@@ -94,6 +94,7 @@
                             <constraint firstItem="UTm-29-h2V" firstAttribute="top" secondItem="F3z-mG-Jgm" secondAttribute="bottom" constant="166" id="yPc-XE-xdH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="io0-Pc-KGo"/>
                     <connections>
                         <outlet property="messagesField" destination="F3z-mG-Jgm" id="Poq-wV-tZv"/>
                         <outlet property="passwordField" destination="yGs-iG-gw0" id="66y-O7-qav"/>
@@ -107,7 +108,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="817" y="862"/>
+            <point key="canvasLocation" x="1785" y="862"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="Yth-s2-2hA">
@@ -126,12 +127,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUO-sT-WgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2245" y="1214"/>
+            <point key="canvasLocation" x="3869" y="1214"/>
         </scene>
-        <!--Item 1-->
+        <!--On The Map-->
         <scene sceneID="MFh-gn-WAn">
             <objects>
-                <viewController id="rIe-jG-aQV" customClass="MapViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="On The Map" id="rIe-jG-aQV" customClass="MapViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mjA-Te-sCj"/>
                         <viewControllerLayoutGuide type="bottom" id="iZh-A7-CLh"/>
@@ -139,18 +140,33 @@
                     <view key="view" contentMode="scaleToFill" id="TTz-pC-8Ok">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FmD-hD-huO">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="FmD-hD-huO" secondAttribute="trailing" constant="-20" id="49K-Li-xU0"/>
+                            <constraint firstItem="iZh-A7-CLh" firstAttribute="top" secondItem="FmD-hD-huO" secondAttribute="bottom" id="5wG-tw-Qrl"/>
+                            <constraint firstItem="FmD-hD-huO" firstAttribute="leading" secondItem="TTz-pC-8Ok" secondAttribute="leadingMargin" constant="-20" id="HdA-jm-d7h"/>
+                            <constraint firstItem="FmD-hD-huO" firstAttribute="top" secondItem="mjA-Te-sCj" secondAttribute="bottom" id="xwf-rs-hf3"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" selectedImage="OnTheMap_120" id="jbL-eb-W3m"/>
+                    <tabBarItem key="tabBarItem" title="On The Map" id="jbL-eb-W3m"/>
+                    <connections>
+                        <outlet property="studentMap" destination="FmD-hD-huO" id="Oya-sO-3jM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBf-pV-TwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2245" y="545"/>
+            <point key="canvasLocation" x="3869" y="545"/>
         </scene>
         <!--On The Map-->
         <scene sceneID="pxS-M7-ZoO">
             <objects>
                 <tabBarController storyboardIdentifier="StudentInformationView" title="On The Map" id="P67-qB-cFu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="EC1-ht-HtT"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="vrp-8r-E4q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -163,11 +179,28 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Fc-lp-0VA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508" y="862"/>
+            <point key="canvasLocation" x="3132" y="862"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vH3-fR-VLR">
+            <objects>
+                <navigationController storyboardIdentifier="StudentInformationNavigator" automaticallyAdjustsScrollViewInsets="NO" id="y2Q-5R-3i0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rvp-fd-ecv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="P67-qB-cFu" kind="relationship" relationship="rootViewController" id="wYo-ff-URp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6in-w0-3T1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2453" y="862"/>
         </scene>
     </scenes>
     <resources>
         <image name="LaunchImage_U_2" width="1536" height="2048"/>
-        <image name="OnTheMap_120" width="120" height="120"/>
     </resources>
 </document>
