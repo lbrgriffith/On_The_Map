@@ -25,6 +25,14 @@ class MapViewController : UIViewController {
         studentMap.delegate = self
     }
     
+    // MARK: Actions
+    
+    @IBAction func logout(sender: UIBarButtonItem) {
+        let authenticatedUser = UdacityClient()
+        authenticatedUser.logOut()
+    }
+    
+    
     // MARK: Map Methods
     
     func getUserLocation () {
@@ -35,12 +43,15 @@ class MapViewController : UIViewController {
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                               regionRadius * 2.0, regionRadius * 2.0)
+                               regionRadius * Constants.Mapping.RadiusMultiplier, regionRadius * Constants.Mapping.RadiusMultiplier)
         studentMap.setRegion(coordinateRegion, animated: true)
     }
 }
 
+// MARK: Entension
+
 extension MapViewController: MKMapViewDelegate {
+    // MARK: Annotation
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? UdacityAppUser {
             let identifier = "pin"

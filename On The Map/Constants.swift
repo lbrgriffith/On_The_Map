@@ -20,9 +20,11 @@ struct Constants {
     struct URLRequest {
         static let MethodPOST = "POST"
         static let MethodGET = "GET"
+        static let MethodDELETE = "DELETE"
         static let ApplicationTypeJSON = "application/json"
         static let Accept = "Accept"
         static let ContentType = "Content-Type"
+        static let CookieName = "X-XSRF-TOKEN"
     }
     
     // MARK: Udacity
@@ -42,6 +44,18 @@ struct Constants {
         static let Expiration = "expiration"
         static let MinimumSuccessCode = 200
         static let MaximumSuccessCode = 299
+    }
+    
+    // MARK: Fonts
+    struct FontFace {
+        static let RobotoThin = "Roboto-Thin"
+        static let RobotoNormal = "Roboto-Regular"
+        static let RobotoMedium = "Roboto-Medium"
+        static let RobotoDetailSize: CGFloat = 20
+    }
+    
+    struct Mapping {
+        static let RadiusMultiplier = 2.0
     }
     
     // MARK: Selectors
