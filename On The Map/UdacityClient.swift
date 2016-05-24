@@ -153,7 +153,7 @@ class UdacityClient : NSObject {
         let components = NSURLComponents()
         components.scheme = Constants.Udacity.ApiScheme
         components.host = Constants.Udacity.ApiHost
-        components.path = "\(Constants.Udacity.GetUsers)/\(userId)"
+        components.path = "\(Constants.Udacity.GetUsers)\(userId)"
         print(components.path)
         let request = NSMutableURLRequest(URL: components.URL!)
         

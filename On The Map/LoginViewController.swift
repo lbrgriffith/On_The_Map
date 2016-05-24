@@ -58,11 +58,92 @@ class LoginViewController : UIViewController {
             }
             
             /* 2. Get a session Id from udacity by using the user's login credentials */
-            client.getSessionID(username, password: password)
+            getSessionID(username, password: password)
         }
         else {
             messagesField.text = Constants.Messages.MissingUsernameAndPassword
         }
+    }
+    
+    func getSessionID(username: String, password: String) {
+        /* 1/2. Build the URL, Configure the request */
+        let components = NSURLComponents()
+        components.scheme = Constants.Udacity.ApiScheme
+        components.host = Constants.Udacity.ApiHost
+        components.path = Constants.Udacity.ApiPath
+        let request = NSMutableURLRequest(URL: components.URL!)
+        
+        request.HTTPMethod = Constants.URLRequest.MethodPOST
+        request.addValue(Constants.URLRequest.ApplicationTypeJSON, forHTTPHeaderField: Constants.URLRequest.Accept)
+        request.addValue(Constants.URLRequest.ApplicationTypeJSON, forHTTPHeaderField: Constants.URLRequest.ContentType)
+        request.HTTPBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
+        
+        /* 3. Make the request */
+        let task = client.session.dataTaskWithRequest(request) { (data, response, error) in
+            
+            // if an error occurs, print it and re-enable the UI
+            func displayError(error: String, debugLabelText: String? = nil) {
+                print(error)
+            }
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                displayError("There was an error with your request: \(error)")
+                return;
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= Constants.UdacitySessionResult.MinimumSuccessCode && statusCode <= Constants.UdacitySessionResult.MaximumSuccessCode else {
+                displayError("Your request returned a status code other than 2xx!")
+                return;
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                displayError("No data was returned by the request!")
+                return;
+            }
+            
+            /* 4. Parse the data */
+            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+            
+            /* GUARD: Are the "photos" and "photo" keys in our result? */
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
+            } catch {
+                displayError("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
+            // Parse the account information
+            if let accountInformation = parsedResult[Constants.UdacitySessionResult.Account] as? [String:AnyObject] {
+                let registered = accountInformation[Constants.UdacitySessionResult.Registered] as! Int
+                if (registered == 1) {
+                    self.client.accountRegistered = true
+                }
+                else {
+                    self.client.accountRegistered = false
+                }
+                
+                self.client.accountKey = (accountInformation[Constants.UdacitySessionResult.Key] as? String)!
+                
+                // Parse the Session information.
+                if let accountInformation = parsedResult[Constants.UdacitySessionResult.Session] as? [String:AnyObject] {
+                    let registered = accountInformation[Constants.UdacitySessionResult.Id] as! String
+                    self.client.sessionID = registered
+                    
+                    let DateFormatter = NSDateFormatter()
+                    DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+                    self.client.sessionExpiration = DateFormatter.dateFromString(accountInformation[Constants.UdacitySessionResult.Expiration]! as! String)
+                    
+                    self.completeLogin()
+                }
+            }
+        }
+        
+        /* 5. Start the request */
+        task.resume()
     }
     
     // MARK: Helper Functions
@@ -76,9 +157,11 @@ class LoginViewController : UIViewController {
     // MARK: Login
     
     private func completeLogin() {
-        messagesField.text = ""
-        let controller = storyboard!.instantiateViewControllerWithIdentifier("StudentInformationNavigator") as! UINavigationController
-        presentViewController(controller, animated: true, completion: nil)
+        performUIUpdatesOnMain {
+          self.messagesField.text = ""
+          let controller = self.storyboard!.instantiateViewControllerWithIdentifier("StudentInformationNavigator") as! UINavigationController
+          self.presentViewController(controller, animated: true, completion: nil)
+        }
     }
     
     // Reistration: Send the user to the registration page.
