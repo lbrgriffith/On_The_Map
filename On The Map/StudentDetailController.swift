@@ -28,4 +28,8 @@ class StudentDetailController : UIViewController {
     @IBAction func cancel(sender: UIBarButtonItem) {
         navigationController?.popToRootViewControllerAnimated(true)
     }
+    
+    @IBAction func findOnTheMap(sender: UIButton) {
+        
+    }
 }
