@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D0CD1FF1CEF26B3003F501A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0CD1FE1CEF26B3003F501A /* MapViewController.swift */; };
 		5D0CD2011CEF272A003F501A /* ListviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0CD2001CEF272A003F501A /* ListviewController.swift */; };
+		5D28A98C1CF4FE8500AAA1EC /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D28A98B1CF4FE8500AAA1EC /* StudentLocation.swift */; };
 		5D38447A1CE894B300414118 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3844791CE894B300414118 /* GCDBlackBox.swift */; };
 		5D6695D41CE6B4B900C7C1EA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6695D31CE6B4B900C7C1EA /* Constants.swift */; };
 		5D84D85E1CE6948900DC84CA /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84D85D1CE6948900DC84CA /* StudentInformation.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		5D0CD1FE1CEF26B3003F501A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5D0CD2001CEF272A003F501A /* ListviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListviewController.swift; sourceTree = "<group>"; };
+		5D28A98B1CF4FE8500AAA1EC /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		5D3844791CE894B300414118 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		5D6695D31CE6B4B900C7C1EA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5D84D85D1CE6948900DC84CA /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				5D84D85D1CE6948900DC84CA /* StudentInformation.swift */,
 				5D6695D31CE6B4B900C7C1EA /* Constants.swift */,
 				5DDEEB261CF1F0D700E99A98 /* UdacityAppUser.swift */,
+				5D28A98B1CF4FE8500AAA1EC /* StudentLocation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DC08A041CE54BF10059E39F /* UdacityClient.swift in Sources */,
+				5D28A98C1CF4FE8500AAA1EC /* StudentLocation.swift in Sources */,
 				5DDEEB271CF1F0D700E99A98 /* UdacityAppUser.swift in Sources */,
 				5DF0C5021CF26FFE000C5CA1 /* StudentDetailController.swift in Sources */,
 				5DBF79311CE3F6B700DD9B2A /* LoginViewController.swift in Sources */,

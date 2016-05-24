@@ -48,6 +48,11 @@ struct Constants {
         static let MaximumSuccessCode = 299
     }
     
+    struct Parse {
+        static let ApplicationID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
+        static let RESTAPIKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+    }
+    
     // MARK: Fonts
     struct FontFace {
         static let RobotoThin = "Roboto-Thin"
