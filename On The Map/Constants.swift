@@ -32,6 +32,7 @@ struct Constants {
         static let ApiScheme = "https"
         static let ApiHost = "www.udacity.com"
         static let ApiPath = "/api/session"
+        static let Registration = "/account/auth#!/signup"
     }
     
     // MARK: Udacity Parameter Keys

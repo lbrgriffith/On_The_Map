@@ -33,15 +33,6 @@ class LoginViewController : UIViewController {
         subscribeToNotification(UIKeyboardWillHideNotification, selector: Constants.Selectors.KeyboardWillHide)
         subscribeToNotification(UIKeyboardDidShowNotification, selector: Constants.Selectors.KeyboardDidShow)
         subscribeToNotification(UIKeyboardDidHideNotification, selector: Constants.Selectors.KeyboardDidHide)
-        
-//        for family: String in UIFont.familyNames()
-//        {
-//            print("\(family)")
-//            for names: String in UIFont.fontNamesForFamilyName(family)
-//            {
-//                print("== \(names)")
-//            }
-//        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -89,6 +80,15 @@ class LoginViewController : UIViewController {
         messagesField.text = ""
         let controller = storyboard!.instantiateViewControllerWithIdentifier("StudentInformationNavigator") as! UINavigationController
         presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    // Reistration: Send the user to the registration page.
+    @IBAction func register(sender: UIButton) {
+        let components = NSURLComponents()
+        components.scheme = Constants.Udacity.ApiScheme
+        components.host = Constants.Udacity.ApiHost
+        components.path = Constants.Udacity.Registration
+        UIApplication.sharedApplication().openURL(components.URL!)
     }
 }
 
