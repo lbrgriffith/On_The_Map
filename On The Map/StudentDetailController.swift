@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Information Posting View:
 class StudentDetailController : UIViewController {
     // MARK: Outlets
     

@@ -12,6 +12,7 @@ import UIKit
 class LoginViewController : UIViewController {
     
     // Properties
+    var client = UdacityClient.sharedInstance()
     var keyboardOnScreen = false
     
     // MARK: Storyboard References
@@ -45,10 +46,9 @@ class LoginViewController : UIViewController {
     @IBAction func login(sender: AnyObject) {
         if (usernameField.text != "" && passwordField.text != "") {
             /* 1. Set the parameters */
-            let Client = UdacityClient()
             
-            var username = ""
-            var password = ""
+            var username: String!
+            var password: String!
             
             if let optionalUsername = usernameField.text {
                 username = "\(optionalUsername)"
@@ -58,8 +58,7 @@ class LoginViewController : UIViewController {
             }
             
             /* 2. Get a session Id from udacity by using the user's login credentials */
-            Client.getSessionID(username, password: password)
-            completeLogin()
+            client.getSessionID(username, password: password)
         }
         else {
             messagesField.text = Constants.Messages.MissingUsernameAndPassword

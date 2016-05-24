@@ -13,8 +13,8 @@ import UIKit
 class MapViewController : UIViewController {
     
     // MARK: Outlets and Properties
-    
     @IBOutlet var studentMap: MKMapView!
+    var client = UdacityClient.sharedInstance()
     
     let regionRadius: CLLocationDistance = 1000
     
@@ -23,6 +23,16 @@ class MapViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         studentMap.delegate = self
+        
+        let newYorkLocation = CLLocationCoordinate2DMake(32.3078, -64.7505)
+        // Drop a pin
+        let dropPin = MKPointAnnotation()
+        dropPin.coordinate = newYorkLocation
+        dropPin.title = "Hamilton, Bermuda"
+        studentMap.addAnnotation(dropPin)
+        
+        // get user data 
+        client.getPublicUserData((client.accountKey)!)
     }
     
     // MARK: Actions
@@ -30,13 +40,6 @@ class MapViewController : UIViewController {
     @IBAction func logout(sender: UIBarButtonItem) {
         let authenticatedUser = UdacityClient()
         authenticatedUser.logOut()
-    }
-    
-    
-    // MARK: Map Methods
-    
-    func getUserLocation () {
-        
     }
     
     // MARK: Helper Functions

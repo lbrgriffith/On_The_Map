@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 class UdacityClient : NSObject {
     // MARK: Properties
     
     // authentication state
     var accountRegistered: Bool = false
-    var accountKey: String = ""
-    var sessionID: String = ""
+    var accountKey: String!
+    var sessionID: String!
     var sessionExpiration: NSDate!
     
     // shared session
@@ -36,6 +37,7 @@ class UdacityClient : NSObject {
     }
     
     // MARK: Login
+    
     func getSessionID(username: String, password: String) {       
         /* 1/2. Build the URL, Configure the request */
         let components = NSURLComponents()
@@ -98,12 +100,15 @@ class UdacityClient : NSObject {
                         }
                     
                     self.accountKey = (accountInformation[Constants.UdacitySessionResult.Key] as? String)!
+                print("Account Key: \(self.accountKey)")
             }
             
             // Parse the Session information.
             if let accountInformation = parsedResult[Constants.UdacitySessionResult.Session] as? [String:AnyObject] {
                 let registered = accountInformation[Constants.UdacitySessionResult.Id] as! String
                 self.sessionID = registered
+                
+                print("SessionID: \(self.sessionID)")
                 
                 let DateFormatter = NSDateFormatter()
                 DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
@@ -143,12 +148,19 @@ class UdacityClient : NSObject {
         task.resume()
     }
     
-    func getPublicUserData()
+    func getPublicUserData(userId: String)
     {
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/users/3903878747")!)
+        let components = NSURLComponents()
+        components.scheme = Constants.Udacity.ApiScheme
+        components.host = Constants.Udacity.ApiHost
+        components.path = "\(Constants.Udacity.GetUsers)/\(userId)"
+        print(components.path)
+        let request = NSMutableURLRequest(URL: components.URL!)
+        
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
             if error != nil { // Handle error...
+                print(error)
                 return
             }
             let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
