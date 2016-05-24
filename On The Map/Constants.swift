@@ -12,11 +12,13 @@ import UIKit
 
 struct Constants {
     // MARK: General app constants
+    
     struct Messages {
         static let MissingUsernameAndPassword = "You must enter both username and password!"
     }
     
     // MARK: General
+    
     struct URLRequest {
         static let MethodPOST = "POST"
         static let MethodGET = "GET"
@@ -28,6 +30,7 @@ struct Constants {
     }
     
     // MARK: Udacity
+    
     struct Udacity {
         static let ApiScheme = "https"
         static let ApiHost = "www.udacity.com"
@@ -37,6 +40,7 @@ struct Constants {
     }
     
     // MARK: Udacity Parameter Keys
+    
     struct UdacitySessionResult {
         static let Account = "account"
         static let Registered = "registered"
@@ -48,12 +52,22 @@ struct Constants {
         static let MaximumSuccessCode = 299
     }
     
+    // MARK: Parse API Constants
+    
     struct Parse {
+        static let ApiScheme = "https"
+        static let ApiHost = "api.parse.com"
+        static let ApiPath = "/1/classes/StudentLocation"
+        static let LimitValue = "100"
+        static let LimitKey = "limit"
+        static let ApplicationIDHTTPHeader = "X-Parse-Application-Id"
         static let ApplicationID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
+        static let RESTAPIHTTPHeader = "X-Parse-REST-API-Key"
         static let RESTAPIKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
     }
     
     // MARK: Fonts
+    
     struct FontFace {
         static let RobotoThin = "Roboto-Thin"
         static let RobotoNormal = "Roboto-Regular"
@@ -66,6 +80,7 @@ struct Constants {
     }
     
     // MARK: Selectors
+    
     struct Selectors {
         static let KeyboardWillShow: Selector = Selector("keyboardWillShow:")
         static let KeyboardWillHide: Selector = Selector("keyboardWillHide:")

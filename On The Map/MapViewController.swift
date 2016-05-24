@@ -24,7 +24,7 @@ class MapViewController : UIViewController {
         super.viewDidLoad()
         studentMap.delegate = self
         
-        // DEBUG:
+        // DEBUG: Testing added a pin to the map.
         let newYorkLocation = CLLocationCoordinate2DMake(32.3078, -64.7505)
         // Drop a pin
         let dropPin = MKPointAnnotation()
@@ -32,8 +32,7 @@ class MapViewController : UIViewController {
         dropPin.title = "Hamilton, Bermuda"
         studentMap.addAnnotation(dropPin)
         
-        // get user data 
-        getPublicUserData((client.accountKey)!)
+        getStudentLocations()
     }
     
     // MARK: Actions
@@ -62,12 +61,6 @@ class MapViewController : UIViewController {
             print(NSString(data: newData, encoding: NSUTF8StringEncoding))
         }
         task.resume()
-    }
-    
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                               regionRadius * Constants.Mapping.RadiusMultiplier, regionRadius * Constants.Mapping.RadiusMultiplier)
-        studentMap.setRegion(coordinateRegion, animated: true)
     }
     
     func logOut() {
@@ -101,7 +94,32 @@ class MapViewController : UIViewController {
 // MARK: Entension
 
 extension MapViewController: MKMapViewDelegate {
+    // MARK: Get Student Locations
+    
+    func getStudentLocations() {
+        let components = NSURLComponents()
+        components.scheme = Constants.Parse.ApiScheme
+        components.host = Constants.Parse.ApiHost
+        components.path = Constants.Parse.ApiPath
+        components.queryItems = [NSURLQueryItem]()
+        let queryItem = NSURLQueryItem(name: Constants.Parse.LimitKey, value: Constants.Parse.LimitValue)
+        components.queryItems!.append(queryItem)
+        let request = NSMutableURLRequest(URL: components.URL!)
+        
+        request.addValue(Constants.Parse.ApplicationID, forHTTPHeaderField: Constants.Parse.ApplicationIDHTTPHeader)
+        request.addValue(Constants.Parse.RESTAPIKey, forHTTPHeaderField: Constants.Parse.RESTAPIHTTPHeader)
+        let session = NSURLSession.sharedSession()
+        
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if error != nil { // Handle error...
+                return
+            }
+            print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+        }
+        task.resume()
+    }
     // MARK: Annotation
+    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? UdacityAppUser {
             let identifier = "pin"
@@ -119,5 +137,11 @@ extension MapViewController: MKMapViewDelegate {
             return view
         }
         return nil
+    }
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  regionRadius * Constants.Mapping.RadiusMultiplier, regionRadius * Constants.Mapping.RadiusMultiplier)
+        studentMap.setRegion(coordinateRegion, animated: true)
     }
 }
