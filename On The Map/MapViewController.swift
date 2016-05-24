@@ -24,6 +24,7 @@ class MapViewController : UIViewController {
         super.viewDidLoad()
         studentMap.delegate = self
         
+        // DEBUG:
         let newYorkLocation = CLLocationCoordinate2DMake(32.3078, -64.7505)
         // Drop a pin
         let dropPin = MKPointAnnotation()
@@ -32,22 +33,68 @@ class MapViewController : UIViewController {
         studentMap.addAnnotation(dropPin)
         
         // get user data 
-        client.getPublicUserData((client.accountKey)!)
+        getPublicUserData((client.accountKey)!)
     }
     
     // MARK: Actions
     
     @IBAction func logout(sender: UIBarButtonItem) {
-        let authenticatedUser = UdacityClient()
-        authenticatedUser.logOut()
+        logOut()
     }
     
     // MARK: Helper Functions
+    
+    func getPublicUserData(userId: String)
+    {
+        let components = NSURLComponents()
+        components.scheme = Constants.Udacity.ApiScheme
+        components.host = Constants.Udacity.ApiHost
+        components.path = "\(Constants.Udacity.GetUsers)\(userId)"
+        print(components.path)
+        let request = NSMutableURLRequest(URL: components.URL!)
+        
+        let task = client.session.dataTaskWithRequest(request) { data, response, error in
+            if error != nil { // Handle error...
+                print(error)
+                return
+            }
+            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+        }
+        task.resume()
+    }
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                regionRadius * Constants.Mapping.RadiusMultiplier, regionRadius * Constants.Mapping.RadiusMultiplier)
         studentMap.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func logOut() {
+        let components = NSURLComponents()
+        components.scheme = Constants.Udacity.ApiScheme
+        components.host = Constants.Udacity.ApiHost
+        components.path = Constants.Udacity.ApiPath
+        let request = NSMutableURLRequest(URL: components.URL!)
+        
+        request.HTTPMethod = Constants.URLRequest.MethodDELETE
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == Constants.URLRequest.CookieName { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: Constants.URLRequest.CookieName)
+        }
+        let task = client.session.dataTaskWithRequest(request) { data, response, error in
+            if error != nil { // Handle error…
+                return
+            }
+            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+        }
+        
+        task.resume()
     }
 }
 
