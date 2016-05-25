@@ -80,17 +80,24 @@ class MapViewController : UIViewController {
             request.setValue(xsrfCookie.value, forHTTPHeaderField: Constants.URLRequest.CookieName)
         }
         let task = client.session.dataTaskWithRequest(request) { data, response, error in
-            if error != nil { // Handle error…
+            if error != nil {
+                // Handle error…
                 return
             }
             let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
             print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             
-            let nextViewController = self.storyboard!.instantiateViewControllerWithIdentifier("LoginView") as UIViewController
-            self.presentViewController(nextViewController, animated:true, completion:nil)
+            self.completeLogout()
         }
         
         task.resume()
+    }
+    
+    private func completeLogout() {
+        performUIUpdatesOnMain {
+            let nextViewController = self.storyboard!.instantiateViewControllerWithIdentifier("LoginView") as UIViewController
+            self.presentViewController(nextViewController, animated:true, completion:nil)
+        }
     }
 }
 
