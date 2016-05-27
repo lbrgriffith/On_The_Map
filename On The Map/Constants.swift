@@ -20,6 +20,7 @@ struct Constants {
     // MARK: Toolbar
     struct ToolBarLabel {
         static let LogOut = "Log Out"
+        static let Cancel = "Cancel"
     }
     
     // MARK: General

@@ -19,6 +19,16 @@ class StudentDetailController : UIViewController {
     //MARK: Overrides
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.setHidesBackButton(true, animated:true)
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = Constants.ToolBarLabel.Cancel
+        backItem.target = self
+        backItem.action = #selector(StudentDetailController.cancel)
+        navigationItem.rightBarButtonItem = backItem
+        
         QuestionPart1.font = UIFont(name: Constants.FontFace.RobotoThin, size: Constants.FontFace.RobotoDetailSize)
         QuestionPart2.font = UIFont(name: Constants.FontFace.RobotoMedium, size: Constants.FontFace.RobotoDetailSize)
         QuestionPart3.font = UIFont(name: Constants.FontFace.RobotoThin, size: Constants.FontFace.RobotoDetailSize)
@@ -26,7 +36,7 @@ class StudentDetailController : UIViewController {
     
     // MARK: Actions
     
-    @IBAction func cancel(sender: UIBarButtonItem) {
+    func cancel() {
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
