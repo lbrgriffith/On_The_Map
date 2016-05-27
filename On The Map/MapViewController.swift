@@ -15,6 +15,7 @@ class MapViewController : UIViewController {
     // MARK: Outlets and Properties
     @IBOutlet var studentMap: MKMapView!
     var client = UdacityClient.sharedInstance()
+    var locations: [StudentLocation] = [StudentLocation]()
     
     let regionRadius: CLLocationDistance = 1000
     
@@ -118,14 +119,42 @@ extension MapViewController: MKMapViewDelegate {
         
         request.addValue(Constants.Parse.ApplicationID, forHTTPHeaderField: Constants.Parse.ApplicationIDHTTPHeader)
         request.addValue(Constants.Parse.RESTAPIKey, forHTTPHeaderField: Constants.Parse.RESTAPIHTTPHeader)
-        let session = NSURLSession.sharedSession()
         
-        let task = session.dataTaskWithRequest(request) { data, response, error in
-            if error != nil { // Handle error...
+        let task = client.session.dataTaskWithRequest(request) { data, response, error in
+            // if an error occurs, print it and re-enable the UI
+            func displayError(error: String, debugLabelText: String? = nil) {
+                print(error)
+            }
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                displayError("There was an error with your request: \(error)")
+                return;
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                print("Your request returned a status code other than 2xx!")
                 return
             }
-            print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                displayError("No data was returned by the request!")
+                return;
+            }
+            
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            } catch {
+                displayError("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
+//            self.locations = StudentLocation.locationsFromResults(parsedResult as! [[String : AnyObject]])
         }
+        
         task.resume()
     }
     // MARK: Annotation

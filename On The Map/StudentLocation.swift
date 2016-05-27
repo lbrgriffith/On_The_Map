@@ -28,4 +28,33 @@ struct StudentLocation {
     var latitude: Float!
     // the longitude of the student location (ranges from -180 to 180)
     var longitude: Float!
+    
+    // MARK: Initializers
+    
+    init () {
+    }
+    
+    init(dictionary: [String:AnyObject]) {
+        objectId = dictionary["objectId"] as! String
+        uniqueKey = dictionary["uniqueKey"] as! String
+        firstName = dictionary["firstName"] as? String
+        lastName = dictionary["lastName"] as? String
+        mapString = dictionary["mapString"] as? String
+        mapString = dictionary["mapString"] as? String
+        mediaURL = dictionary["mediaURL"] as? String
+        latitude = dictionary["latitude"] as? Float
+        longitude = dictionary["longitude"] as? Float
+    }
+    
+    static func locationsFromResults(results: [[String:AnyObject]]) -> [StudentLocation] {
+        
+        var locations = [StudentLocation]()
+        
+        // iterate through array of dictionaries, each Movie is a dictionary
+        for result in results {
+            locations.append(StudentLocation(dictionary: result))
+        }
+        
+        return locations
+    }
 }
