@@ -78,7 +78,7 @@ struct Constants {
         static let RobotoThin = "Roboto-Thin"
         static let RobotoNormal = "Roboto-Regular"
         static let RobotoMedium = "Roboto-Medium"
-        static let RobotoDetailSize: CGFloat = 20
+        static let RobotoDetailSize: CGFloat = 22
     }
     
     struct Mapping {
