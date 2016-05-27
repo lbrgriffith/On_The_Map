@@ -159,7 +159,7 @@ class LoginViewController : UIViewController {
     private func completeLogin() {
         performUIUpdatesOnMain {
           self.messagesField.text = ""
-          let controller = self.storyboard!.instantiateViewControllerWithIdentifier("StudentInformationNavigator") as! UINavigationController
+          let controller = self.storyboard!.instantiateViewControllerWithIdentifier("TabNav") as! UITabBarController
           self.presentViewController(controller, animated: true, completion: nil)
         }
     }

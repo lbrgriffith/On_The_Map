@@ -17,6 +17,11 @@ struct Constants {
         static let MissingUsernameAndPassword = "You must enter both username and password!"
     }
     
+    // MARK: Toolbar
+    struct ToolBarLabel {
+        static let LogOut = "Log Out"
+    }
+    
     // MARK: General
     
     struct URLRequest {

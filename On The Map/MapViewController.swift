@@ -25,6 +25,13 @@ class MapViewController : UIViewController {
         super.viewDidLoad()
         studentMap.delegate = self
         
+        let logoutItem = UIBarButtonItem()
+        logoutItem.title = Constants.ToolBarLabel.LogOut
+        logoutItem.target = self
+        logoutItem.action = #selector(MapViewController.logout)
+        
+        navigationItem.leftBarButtonItem = logoutItem
+        
         // DEBUG: Testing added a pin to the map.
         let newYorkLocation = CLLocationCoordinate2DMake(32.3078, -64.7505)
         // Drop a pin
@@ -34,12 +41,6 @@ class MapViewController : UIViewController {
         studentMap.addAnnotation(dropPin)
         
         getStudentLocations()
-    }
-    
-    // MARK: Actions
-    
-    @IBAction func logout(sender: UIBarButtonItem) {
-        logOut()
     }
     
     // MARK: Helper Functions
@@ -64,7 +65,7 @@ class MapViewController : UIViewController {
         task.resume()
     }
     
-    func logOut() {
+    func logout() {
         let components = NSURLComponents()
         components.scheme = Constants.Udacity.ApiScheme
         components.host = Constants.Udacity.ApiHost

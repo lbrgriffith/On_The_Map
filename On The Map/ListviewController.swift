@@ -18,8 +18,12 @@ class ListViewController : UITableViewController {
     var client = UdacityClient.sharedInstance()
     var locations: [StudentLocation] = [StudentLocation]()
     
-    override func viewDidLoad() {
-        locationTableView.delegate = self
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        refresh()
+    }
+    
+    func refresh() {
         /* 1 & 2. Build the URL */
         /* 3. Configure the request */
         let components = NSURLComponents()
@@ -78,6 +82,54 @@ class ListViewController : UITableViewController {
         /* 7. Start the request */
         task.resume()
     }
+    
+    override func viewDidLoad() {
+        locationTableView.delegate = self
+        
+        // Log out toolbar item
+        let logoutItem = UIBarButtonItem()
+        logoutItem.title = Constants.ToolBarLabel.LogOut
+        logoutItem.target = self
+        logoutItem.action = #selector(ListViewController.logout)
+        navigationItem.leftBarButtonItem = logoutItem
+    }
+    
+    func logout() {
+        let components = NSURLComponents()
+        components.scheme = Constants.Udacity.ApiScheme
+        components.host = Constants.Udacity.ApiHost
+        components.path = Constants.Udacity.ApiPath
+        let request = NSMutableURLRequest(URL: components.URL!)
+        
+        request.HTTPMethod = Constants.URLRequest.MethodDELETE
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == Constants.URLRequest.CookieName { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: Constants.URLRequest.CookieName)
+        }
+        let task = client.session.dataTaskWithRequest(request) { data, response, error in
+            if error != nil {
+                // Handle error…
+                return
+            }
+            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+            
+            self.completeLogout()
+        }
+        
+        task.resume()
+    }
+    
+    private func completeLogout() {
+        performUIUpdatesOnMain {
+            let nextViewController = self.storyboard!.instantiateViewControllerWithIdentifier("LoginView") as UIViewController
+            self.presentViewController(nextViewController, animated:true, completion:nil)
+        }
+    }
 }
 
 extension ListViewController {
@@ -92,6 +144,7 @@ extension ListViewController {
         // set cell defaults
         cell.textLabel!.text = "\(location.firstName) \(location.lastName)"
         cell.imageView!.image = UIImage(named: "pin")
+        cell.detailTextLabel?.text = "\(location.mediaURL)"
         cell.imageView!.contentMode = UIViewContentMode.ScaleAspectFit
         
         return cell
@@ -114,10 +167,7 @@ extension ListViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        // push the movie detail view
-//        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MovieDetailViewController") as! MovieDetailViewController
-//        controller.movie = movies[indexPath.row]
-//        navigationController!.pushViewController(controller, animated: true)
+        let url = NSURL(string: locations[indexPath.row].mediaURL!)
+        UIApplication.sharedApplication().openURL(url!)
     }
 }
