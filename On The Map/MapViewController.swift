@@ -128,12 +128,13 @@ extension MapViewController: MKMapViewDelegate {
             if let parsedData = parsedResult["results"] as? [[String:AnyObject]] {
                 let StudentLocations = StudentLocation.locationsFromResults(parsedData)
                 for studentlocation in StudentLocations {
+                    performUIUpdatesOnMain({
                     let Coordinate = CLLocationCoordinate2DMake(studentlocation.latitude as CLLocationDegrees, studentlocation.longitude as CLLocationDegrees)
                     // Drop a pin
                     let dropPin = MKPointAnnotation()
                     dropPin.coordinate = Coordinate
                     dropPin.title = "\(studentlocation.firstName) \(studentlocation.lastName)"
-                    self.studentMap.addAnnotation(dropPin)
+                    self.studentMap.addAnnotation(dropPin)})
                 }
             }
         }
