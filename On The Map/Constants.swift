@@ -23,6 +23,11 @@ struct Constants {
         static let Cancel = "Cancel"
     }
     
+    // MARK: Input Entry
+    struct ControlLabel {
+        static let Submit = "Submit"
+    }
+    
     // MARK: General
     
     struct URLRequest {

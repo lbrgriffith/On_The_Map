@@ -32,38 +32,10 @@ class MapViewController : UIViewController {
         
         navigationItem.leftBarButtonItem = logoutItem
         
-//        // DEBUG: Testing added a pin to the map.
-//        let newYorkLocation = CLLocationCoordinate2DMake(32.3078, -64.7505)
-//        // Drop a pin
-//        let dropPin = MKPointAnnotation()
-//        dropPin.coordinate = newYorkLocation
-//        dropPin.title = "Hamilton, Bermuda"
-//        studentMap.addAnnotation(dropPin)
-        
         getStudentLocations()
     }
     
     // MARK: Helper Functions
-    
-    func getPublicUserData(userId: String)
-    {
-        let components = NSURLComponents()
-        components.scheme = Constants.Udacity.ApiScheme
-        components.host = Constants.Udacity.ApiHost
-        components.path = "\(Constants.Udacity.GetUsers)\(userId)"
-        print(components.path)
-        let request = NSMutableURLRequest(URL: components.URL!)
-        
-        let task = client.session.dataTaskWithRequest(request) { data, response, error in
-            if error != nil { // Handle error...
-                print(error)
-                return
-            }
-            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
-        }
-        task.resume()
-    }
     
     func logout() {
         let components = NSURLComponents()
