@@ -32,13 +32,13 @@ class MapViewController : UIViewController {
         
         navigationItem.leftBarButtonItem = logoutItem
         
-        // DEBUG: Testing added a pin to the map.
-        let newYorkLocation = CLLocationCoordinate2DMake(32.3078, -64.7505)
-        // Drop a pin
-        let dropPin = MKPointAnnotation()
-        dropPin.coordinate = newYorkLocation
-        dropPin.title = "Hamilton, Bermuda"
-        studentMap.addAnnotation(dropPin)
+//        // DEBUG: Testing added a pin to the map.
+//        let newYorkLocation = CLLocationCoordinate2DMake(32.3078, -64.7505)
+//        // Drop a pin
+//        let dropPin = MKPointAnnotation()
+//        dropPin.coordinate = newYorkLocation
+//        dropPin.title = "Hamilton, Bermuda"
+//        studentMap.addAnnotation(dropPin)
         
         getStudentLocations()
     }

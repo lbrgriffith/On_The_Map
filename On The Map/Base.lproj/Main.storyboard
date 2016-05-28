@@ -329,11 +329,16 @@
                                     <action selector="findOnTheMap:" destination="5pN-yE-Ug1" eventType="touchUpInside" id="BsU-PK-9sb"/>
                                 </connections>
                             </button>
+                            <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oea-4A-CM0">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="9eA-j0-Vek" firstAttribute="top" secondItem="oea-4A-CM0" secondAttribute="bottom" id="06a-8y-dET"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JTl-MZ-yfn" secondAttribute="trailing" constant="-20" id="0XY-k7-Pzf"/>
                             <constraint firstItem="JTl-MZ-yfn" firstAttribute="leading" secondItem="7qS-Df-0ID" secondAttribute="leadingMargin" constant="-20" id="1lb-iG-FLc"/>
+                            <constraint firstItem="oea-4A-CM0" firstAttribute="top" secondItem="7qS-Df-0ID" secondAttribute="topMargin" id="2gy-kL-qqY"/>
                             <constraint firstItem="JTl-MZ-yfn" firstAttribute="top" secondItem="AZy-M0-t5Z" secondAttribute="bottom" constant="52" id="87w-az-U61"/>
                             <constraint firstItem="QjB-nu-8SU" firstAttribute="top" secondItem="JTl-MZ-yfn" secondAttribute="bottom" id="A6s-hq-qdG"/>
                             <constraint firstItem="QjB-nu-8SU" firstAttribute="top" secondItem="JTl-MZ-yfn" secondAttribute="bottom" id="ENB-Jn-4Ds"/>
@@ -344,7 +349,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="JTl-MZ-yfn" secondAttribute="trailing" constant="-20" id="U7c-s9-rCi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QjB-nu-8SU" secondAttribute="trailing" constant="-20" id="YhZ-Pq-Ulz"/>
                             <constraint firstAttribute="bottom" secondItem="JTl-MZ-yfn" secondAttribute="bottom" constant="381" id="Ywk-qZ-CzK"/>
+                            <constraint firstItem="oea-4A-CM0" firstAttribute="leading" secondItem="7qS-Df-0ID" secondAttribute="leadingMargin" constant="-20" id="bHd-9p-7s8"/>
                             <constraint firstItem="CoV-O0-x6t" firstAttribute="leading" secondItem="QjB-nu-8SU" secondAttribute="leading" id="ekZ-8I-z0y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oea-4A-CM0" secondAttribute="trailing" constant="-20" id="iEu-LM-hhC"/>
                             <constraint firstItem="tA2-vr-8aD" firstAttribute="top" secondItem="CoV-O0-x6t" secondAttribute="bottom" constant="30" id="oti-eH-k4s"/>
                             <constraint firstItem="CoV-O0-x6t" firstAttribute="trailing" secondItem="QjB-nu-8SU" secondAttribute="trailing" id="rKP-40-403"/>
                             <constraint firstItem="9eA-j0-Vek" firstAttribute="top" secondItem="tA2-vr-8aD" secondAttribute="bottom" constant="88" id="u9c-XA-YQi"/>
@@ -357,6 +364,9 @@
                         <outlet property="QuestionPart1" destination="462-JO-kk5" id="NHr-Sy-IT9"/>
                         <outlet property="QuestionPart2" destination="rY4-uj-YWO" id="0Md-ri-ouc"/>
                         <outlet property="QuestionPart3" destination="hMB-EU-dta" id="Yf4-5j-nSD"/>
+                        <outlet property="actionButton" destination="tA2-vr-8aD" id="ons-43-mto"/>
+                        <outlet property="displayMap" destination="oea-4A-CM0" id="TDP-ei-HMn"/>
+                        <outlet property="location" destination="QjB-nu-8SU" id="SmY-ST-5nL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Mf-kV-0Ok" userLabel="First Responder" sceneMemberID="firstResponder"/>
