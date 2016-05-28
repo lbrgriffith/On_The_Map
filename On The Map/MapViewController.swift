@@ -107,13 +107,13 @@ extension MapViewController: MKMapViewDelegate {
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                print("Your request returned a status code other than 2xx!")
+                print(Constants.Messages.Not200)
                 return
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
-                displayError("No data was returned by the request!")
+                displayError(Constants.Messages.NoData)
                 return;
             }
             
@@ -125,35 +125,19 @@ extension MapViewController: MKMapViewDelegate {
                 return
             }
             
-//            self.locations = StudentLocation.locationsFromResults(parsedResult as! [[String : AnyObject]])
+            if let parsedData = parsedResult["results"] as? [[String:AnyObject]] {
+                let StudentLocations = StudentLocation.locationsFromResults(parsedData)
+                for studentlocation in StudentLocations {
+                    let Coordinate = CLLocationCoordinate2DMake(studentlocation.latitude as CLLocationDegrees, studentlocation.longitude as CLLocationDegrees)
+                    // Drop a pin
+                    let dropPin = MKPointAnnotation()
+                    dropPin.coordinate = Coordinate
+                    dropPin.title = "\(studentlocation.firstName) \(studentlocation.lastName)"
+                    self.studentMap.addAnnotation(dropPin)
+                }
+            }
         }
         
         task.resume()
-    }
-    // MARK: Annotation
-    
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if let annotation = annotation as? UdacityAppUser {
-            let identifier = "pin"
-            var view: MKPinAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
-                as? MKPinAnnotationView {
-                dequeuedView.annotation = annotation
-                view = dequeuedView
-            } else {
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: -5, y: 5)
-                view.rightCalloutAccessoryView = UIButton(type: UIButtonType.DetailDisclosure) as UIView
-            }
-            return view
-        }
-        return nil
-    }
-    
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                  regionRadius * Constants.Mapping.RadiusMultiplier, regionRadius * Constants.Mapping.RadiusMultiplier)
-        studentMap.setRegion(coordinateRegion, animated: true)
     }
 }

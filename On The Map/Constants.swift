@@ -90,6 +90,7 @@ struct Constants {
     
     struct Mapping {
         static let RadiusMultiplier = 2.0
+        static let Identifier = "pin"
     }
     
     // MARK: Selectors

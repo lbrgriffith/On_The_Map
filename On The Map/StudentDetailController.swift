@@ -63,10 +63,6 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
         if (actionButton.titleLabel?.text != Constants.ControlLabel.Submit) {
             geocoder.geocodeAddressString(location.text!) { (placemarks, error) -> Void in
                 if let firstPlacemark = placemarks?[0] {
-                    //print(firstPlacemark)
-                    
-                    // DEBUG: Testing added a pin to the map.
-                    
                     self.latitude = (firstPlacemark.location?.coordinate.latitude)!
                     self.longitude = (firstPlacemark.location?.coordinate.longitude)!
                     

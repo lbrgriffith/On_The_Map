@@ -25,9 +25,9 @@ struct StudentLocation {
     // the URL provided by the student
     var mediaURL: String!
     // the latitude of the student location (ranges from -90 to 90)
-    var latitude: Float!
+    var latitude: Double!
     // the longitude of the student location (ranges from -180 to 180)
-    var longitude: Float!
+    var longitude: Double!
     
     // MARK: Initializers
     
@@ -42,8 +42,8 @@ struct StudentLocation {
         mapString = dictionary["mapString"] as? String
         mapString = dictionary["mapString"] as? String
         mediaURL = dictionary["mediaURL"] as? String
-        latitude = dictionary["latitude"] as? Float
-        longitude = dictionary["longitude"] as? Float
+        latitude = dictionary["latitude"] as? Double
+        longitude = dictionary["longitude"] as? Double
     }
     
     static func locationsFromResults(results: [[String:AnyObject]]) -> [StudentLocation] {
