@@ -119,20 +119,19 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
                 
                 /* GUARD: Did we get a successful 2XX response? */
                 guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= Constants.UdacitySessionResult.MinimumSuccessCode && statusCode <= Constants.UdacitySessionResult.MaximumSuccessCode else {
-                    displayError("Your request returned a status code other than 2xx!")
+                    displayError(Constants.Messages.Not200)
                     return;
                 }
                 
                 /* GUARD: Was there any data returned? */
                 guard let data = data else {
-                    displayError("No data was returned by the request!")
+                    displayError(Constants.Messages.NoData)
                     return;
                 }
                 
                 /* 4. Parse the data */
-                let parsedResult: AnyObject!
                 do {
-                    parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                    try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
                 } catch {
                     displayError("Could not parse the data as JSON: '\(data)'")
                     return
@@ -151,6 +150,7 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
     func getPublicUserData(userId: String)
     {
         let components = NSURLComponents()
+        
         components.scheme = Constants.Udacity.ApiScheme
         components.host = Constants.Udacity.ApiHost
         components.path = "\(Constants.Udacity.GetUsers)\(userId)"
@@ -171,13 +171,13 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= Constants.UdacitySessionResult.MinimumSuccessCode && statusCode <= Constants.UdacitySessionResult.MaximumSuccessCode else {
-                displayError("Your request returned a status code other than 2xx!")
+                displayError(Constants.Messages.Not200)
                 return;
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
-                displayError("No data was returned by the request!")
+                displayError(Constants.Messages.NoData)
                 return;
             }
             

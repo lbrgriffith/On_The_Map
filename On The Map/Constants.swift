@@ -15,6 +15,8 @@ struct Constants {
     
     struct Messages {
         static let MissingUsernameAndPassword = "You must enter both username and password!"
+        static let Not200 = "Your request returned a status code other than 2xx!"
+        static let NoData = "No data was returned by the request!"
     }
     
     // MARK: Toolbar
