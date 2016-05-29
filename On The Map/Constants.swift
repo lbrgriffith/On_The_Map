@@ -8,8 +8,6 @@
 
 import UIKit
 
-// MARK: - Udacity Constants
-
 struct Constants {
     // MARK: General app constants
     
@@ -20,16 +18,20 @@ struct Constants {
     }
     
     // MARK: Toolbar
+    
     struct ToolBarLabel {
         static let LogOut = "Log Out"
         static let Cancel = "Cancel"
     }
+    
+    // MARK: Dates
     
     struct Dates {
         static let Format = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
     }
     
     // MARK: Input Entry
+    
     struct ControlLabel {
         static let Submit = "Submit"
     }
@@ -92,6 +94,8 @@ struct Constants {
         static let RobotoMedium = "Roboto-Medium"
         static let RobotoDetailSize: CGFloat = 22
     }
+    
+    // MARK: Maps
     
     struct Mapping {
         static let RadiusMultiplier = 2.0

@@ -46,6 +46,8 @@ struct StudentLocation {
         longitude = dictionary["longitude"] as? Double
     }
     
+    // MARK: Methods
+    
     static func locationsFromResults(results: [[String:AnyObject]]) -> [StudentLocation] {
         
         var locations = [StudentLocation]()

@@ -11,11 +11,13 @@ import UIKit
 
 class LoginViewController : UIViewController {
     
-    // Properties
+    // MARK: Properties
+    
     var client = UdacityClient.sharedInstance()
     var keyboardOnScreen = false
     
     // MARK: Storyboard References
+    
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var messagesField: UILabel!
@@ -49,6 +51,8 @@ class LoginViewController : UIViewController {
             messagesField.text = Constants.Messages.MissingUsernameAndPassword
         }
     }
+    
+    // MARK: Methods
     
     func getSessionID(username: String, password: String) {
         /* Build the URL, Configure the request */
@@ -162,7 +166,7 @@ class LoginViewController : UIViewController {
         }
     }
     
-    // Reistration: Send the user to the registration page.
+    // Registration: Send the user to the registration page.
     @IBAction func register(sender: UIButton) {
         let components = NSURLComponents()
         components.scheme = Constants.Udacity.ApiScheme
