@@ -20,7 +20,8 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var displayMap: MKMapView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var blueBackground: UILabel!
-    @IBOutlet weak var urlTextField: UITextView!
+    
+    @IBOutlet weak var urlTextField: UITextField!
     
     // MARK: Properties
     
@@ -94,7 +95,7 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
             request.addValue(Constants.Parse.ApplicationID, forHTTPHeaderField: Constants.Parse.ApplicationIDHTTPHeader)
             request.addValue(Constants.Parse.RESTAPIKey, forHTTPHeaderField: Constants.Parse.RESTAPIHTTPHeader)
             request.addValue(Constants.URLRequest.ApplicationTypeJSON, forHTTPHeaderField: Constants.URLRequest.ContentType)
-            request.HTTPBody = "{\"uniqueKey\": \"\(client.accountKey)\", \"firstName\": \"\(self.firstName)\", \"lastName\": \"\(self.lastName)\",\"mapString\": \"\(location.text! as String)\", \"mediaURL\": \"\(urlTextField.text as String)\",\"latitude\": \(self.latitude), \"longitude\": \(self.longitude)}".dataUsingEncoding(NSUTF8StringEncoding)
+            request.HTTPBody = "{\"uniqueKey\": \"\(client.accountKey)\", \"firstName\": \"\(self.firstName)\", \"lastName\": \"\(self.lastName)\",\"mapString\": \"\(location.text! as String)\", \"mediaURL\": \"\(urlTextField.text! as String)\",\"latitude\": \(self.latitude), \"longitude\": \(self.longitude)}".dataUsingEncoding(NSUTF8StringEncoding)
         
             let task = client.session.dataTaskWithRequest(request) { data, response, error in
                 // if an error occurs, print it and re-enable the UI

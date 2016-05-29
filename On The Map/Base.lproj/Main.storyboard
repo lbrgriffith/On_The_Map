@@ -339,13 +339,13 @@
                                     <action selector="findOnTheMap:" destination="5pN-yE-Ug1" eventType="touchUpInside" id="BsU-PK-9sb"/>
                                 </connections>
                             </button>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="Enter a Link to Share Here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="neU-dP-edl">
-                                <rect key="frame" x="0.0" y="64" width="600" height="155"/>
-                                <color key="backgroundColor" red="0.3924425782" green="0.70320751429999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" placeholder="Please enter the address here" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oHP-Wy-25L">
+                                <rect key="frame" x="0.0" y="65" width="600" height="150"/>
+                                <color key="backgroundColor" red="0.1570890355" green="0.52442403869999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.99080515459999996" green="1" blue="0.9849064756" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                            </textView>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -353,14 +353,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="JTl-MZ-yfn" secondAttribute="trailing" constant="-20" id="0XY-k7-Pzf"/>
                             <constraint firstItem="JTl-MZ-yfn" firstAttribute="leading" secondItem="7qS-Df-0ID" secondAttribute="leadingMargin" constant="-20" id="1lb-iG-FLc"/>
                             <constraint firstItem="oea-4A-CM0" firstAttribute="top" secondItem="7qS-Df-0ID" secondAttribute="topMargin" id="2gy-kL-qqY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="neU-dP-edl" secondAttribute="trailing" constant="-20" id="7qO-q2-VVg"/>
                             <constraint firstItem="JTl-MZ-yfn" firstAttribute="top" secondItem="AZy-M0-t5Z" secondAttribute="bottom" constant="52" id="87w-az-U61"/>
                             <constraint firstItem="QjB-nu-8SU" firstAttribute="top" secondItem="JTl-MZ-yfn" secondAttribute="bottom" id="A6s-hq-qdG"/>
+                            <constraint firstItem="oHP-Wy-25L" firstAttribute="leading" secondItem="7qS-Df-0ID" secondAttribute="leadingMargin" constant="-20" id="Dax-FF-Avx"/>
                             <constraint firstItem="QjB-nu-8SU" firstAttribute="top" secondItem="JTl-MZ-yfn" secondAttribute="bottom" id="ENB-Jn-4Ds"/>
-                            <constraint firstItem="QjB-nu-8SU" firstAttribute="top" secondItem="neU-dP-edl" secondAttribute="bottom" id="Lpq-hK-wXB"/>
                             <constraint firstItem="JTl-MZ-yfn" firstAttribute="top" secondItem="AZy-M0-t5Z" secondAttribute="bottom" constant="8" id="PCv-9L-pJ9"/>
                             <constraint firstItem="CoV-O0-x6t" firstAttribute="top" secondItem="JTl-MZ-yfn" secondAttribute="bottom" constant="49" id="Q0B-De-AXk"/>
                             <constraint firstItem="QjB-nu-8SU" firstAttribute="top" secondItem="JTl-MZ-yfn" secondAttribute="bottom" id="Rvi-j3-biA"/>
+                            <constraint firstItem="QjB-nu-8SU" firstAttribute="top" secondItem="oHP-Wy-25L" secondAttribute="bottom" constant="4" id="Sl4-vm-bbR"/>
                             <constraint firstItem="QjB-nu-8SU" firstAttribute="leading" secondItem="7qS-Df-0ID" secondAttribute="leadingMargin" constant="-20" id="TKW-Nh-HcG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JTl-MZ-yfn" secondAttribute="trailing" constant="-20" id="U7c-s9-rCi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QjB-nu-8SU" secondAttribute="trailing" constant="-20" id="YhZ-Pq-Ulz"/>
@@ -368,13 +368,13 @@
                             <constraint firstItem="oea-4A-CM0" firstAttribute="leading" secondItem="7qS-Df-0ID" secondAttribute="leadingMargin" constant="-20" id="bHd-9p-7s8"/>
                             <constraint firstItem="CoV-O0-x6t" firstAttribute="leading" secondItem="QjB-nu-8SU" secondAttribute="leading" id="ekZ-8I-z0y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oea-4A-CM0" secondAttribute="trailing" constant="-20" id="iEu-LM-hhC"/>
-                            <constraint firstItem="neU-dP-edl" firstAttribute="leading" secondItem="7qS-Df-0ID" secondAttribute="leadingMargin" constant="-20" id="oVd-jc-OQ0"/>
                             <constraint firstItem="tA2-vr-8aD" firstAttribute="top" secondItem="CoV-O0-x6t" secondAttribute="bottom" constant="30" id="oti-eH-k4s"/>
                             <constraint firstItem="CoV-O0-x6t" firstAttribute="trailing" secondItem="QjB-nu-8SU" secondAttribute="trailing" id="rKP-40-403"/>
+                            <constraint firstItem="oHP-Wy-25L" firstAttribute="top" secondItem="AZy-M0-t5Z" secondAttribute="bottom" constant="1" id="sKw-RV-V7H"/>
                             <constraint firstItem="9eA-j0-Vek" firstAttribute="top" secondItem="tA2-vr-8aD" secondAttribute="bottom" constant="88" id="u9c-XA-YQi"/>
                             <constraint firstItem="JTl-MZ-yfn" firstAttribute="leading" secondItem="7qS-Df-0ID" secondAttribute="leadingMargin" constant="-20" id="uHW-HP-Db9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oHP-Wy-25L" secondAttribute="trailing" constant="-20" id="xwz-ic-PHT"/>
                             <constraint firstItem="tA2-vr-8aD" firstAttribute="centerX" secondItem="CoV-O0-x6t" secondAttribute="centerX" id="yJZ-4o-GOc"/>
-                            <constraint firstItem="neU-dP-edl" firstAttribute="top" secondItem="AZy-M0-t5Z" secondAttribute="bottom" id="zuc-ag-0ul"/>
                         </constraints>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -386,7 +386,7 @@
                         <outlet property="blueBackground" destination="CoV-O0-x6t" id="8Rd-JM-SoM"/>
                         <outlet property="displayMap" destination="oea-4A-CM0" id="TDP-ei-HMn"/>
                         <outlet property="location" destination="QjB-nu-8SU" id="SmY-ST-5nL"/>
-                        <outlet property="urlTextField" destination="neU-dP-edl" id="ZnO-wB-H5h"/>
+                        <outlet property="urlTextField" destination="oHP-Wy-25L" id="Wbi-AI-j15"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Mf-kV-0Ok" userLabel="First Responder" sceneMemberID="firstResponder"/>
