@@ -19,7 +19,6 @@ class MapViewController : UIViewController {
     
     var client = UdacityClient.sharedInstance()
     var locations: [StudentLocation] = [StudentLocation]()
-    let regionRadius: CLLocationDistance = 1000
     
     // MARK: View Functions
     

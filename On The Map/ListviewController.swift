@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class ListViewController : UITableViewController {
+    // MARK: Outlets
     
     @IBOutlet var locationTableView: UITableView!
     
@@ -18,10 +19,26 @@ class ListViewController : UITableViewController {
     var client = UdacityClient.sharedInstance()
     var locations: [StudentLocation] = [StudentLocation]()
     
+    // MARK: Lifecycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         refresh()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        locationTableView.delegate = self
+        
+        // Log out toolbar item
+        let logoutItem = UIBarButtonItem()
+        logoutItem.title = Constants.ToolBarLabel.LogOut
+        logoutItem.target = self
+        logoutItem.action = #selector(ListViewController.logout)
+        navigationItem.leftBarButtonItem = logoutItem
+    }
+    
+    // MARK: Methods
     
     func refresh() {
         /* 1 & 2. Build the URL */
@@ -81,17 +98,6 @@ class ListViewController : UITableViewController {
         
         /* 7. Start the request */
         task.resume()
-    }
-    
-    override func viewDidLoad() {
-        locationTableView.delegate = self
-        
-        // Log out toolbar item
-        let logoutItem = UIBarButtonItem()
-        logoutItem.title = Constants.ToolBarLabel.LogOut
-        logoutItem.target = self
-        logoutItem.action = #selector(ListViewController.logout)
-        navigationItem.leftBarButtonItem = logoutItem
     }
     
     func logout() {

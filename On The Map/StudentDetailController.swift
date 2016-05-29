@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import AddressBook
 
-// Information Posting View:
 class StudentDetailController : UIViewController, CLLocationManagerDelegate {
     // MARK: Outlets
     
@@ -31,7 +30,7 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
     var firstName: String!
     var lastName: String!
     
-    //MARK: Overrides
+    //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +51,6 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
     }
     
     // MARK: Actions
-    
-    func cancel() {
-        navigationController?.popToRootViewControllerAnimated(true)
-    }
     
     @IBAction func findOnTheMap(sender: UIButton) {
         let geocoder = CLGeocoder()
@@ -142,6 +137,10 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
     }
     
     // MARK: Methods
+    
+    func cancel() {
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
     
     func getPublicUserData(userId: String)
     {
