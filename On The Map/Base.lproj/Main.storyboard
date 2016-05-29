@@ -19,14 +19,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage_U_2" translatesAutoresizingMaskIntoConstraints="NO" id="ax1-Cq-ajQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="ax1-Cq-ajQ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="OMR-9S-kPz" appends="YES" id="rZf-Ta-Fhb"/>
                                 </connections>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aGY-N3-kJp">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aGY-N3-kJp">
                                 <rect key="frame" x="20" y="220" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="i4i-gZ-cxn"/>
@@ -34,7 +34,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yGs-iG-gw0">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yGs-iG-gw0">
                                 <rect key="frame" x="20" y="263" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="RcZ-6T-Fo0"/>
@@ -42,16 +42,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3z-pW-6xi">
-                                <rect key="frame" x="222" y="182" width="157" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="qab-7j-7X3"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3z-pW-6xi">
+                                <rect key="frame" x="20" y="182" width="560" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6w-Sj-3Fp">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6w-Sj-3Fp">
                                 <rect key="frame" x="20" y="309" width="560" height="41"/>
                                 <color key="backgroundColor" red="1" green="0.2656828724473892" blue="0.077824702757211539" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -65,7 +62,7 @@
                                     <action selector="login:" destination="XNX-eK-nGW" eventType="touchUpInside" id="S5P-Gu-HDa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoB-aQ-msD">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoB-aQ-msD">
                                 <rect key="frame" x="20" y="379" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Don't have an acount?  Sign Up">
@@ -75,32 +72,42 @@
                                     <action selector="register:" destination="XNX-eK-nGW" eventType="touchUpInside" id="VDj-lY-fcL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3z-mG-Jgm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3z-mG-Jgm">
                                 <rect key="frame" x="20" y="439" width="560" height="65"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="ssy-OV-qtW">
+                                <rect key="frame" x="20" y="20" width="560" height="154"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="154" id="Tju-h2-RTW"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="I3z-pW-6xi" firstAttribute="leading" secondItem="8bj-Au-Tnw" secondAttribute="leadingMargin" id="00T-Jd-5AT"/>
+                            <constraint firstItem="ssy-OV-qtW" firstAttribute="top" secondItem="yQT-lB-ldR" secondAttribute="bottom" id="0FL-0h-Mjq"/>
                             <constraint firstItem="SoB-aQ-msD" firstAttribute="top" secondItem="E6w-Sj-3Fp" secondAttribute="bottom" constant="29" id="0ZM-xZ-Ru7"/>
                             <constraint firstItem="E6w-Sj-3Fp" firstAttribute="leading" secondItem="F3z-mG-Jgm" secondAttribute="leading" id="2tI-1B-SSZ"/>
                             <constraint firstItem="F3z-mG-Jgm" firstAttribute="top" secondItem="SoB-aQ-msD" secondAttribute="bottom" constant="30" id="5eM-e9-q9u"/>
                             <constraint firstItem="ax1-Cq-ajQ" firstAttribute="bottom" secondItem="UTm-29-h2V" secondAttribute="top" id="91Z-HS-bXn"/>
+                            <constraint firstItem="I3z-pW-6xi" firstAttribute="trailing" secondItem="8bj-Au-Tnw" secondAttribute="trailingMargin" id="AVk-em-iti"/>
                             <constraint firstItem="yGs-iG-gw0" firstAttribute="trailing" secondItem="E6w-Sj-3Fp" secondAttribute="trailing" id="DEF-l3-uCT"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="leading" secondItem="yGs-iG-gw0" secondAttribute="leading" id="DII-rY-zV7"/>
-                            <constraint firstItem="I3z-pW-6xi" firstAttribute="top" secondItem="yQT-lB-ldR" secondAttribute="bottom" constant="162" id="FGH-dy-Hv0"/>
+                            <constraint firstItem="aGY-N3-kJp" firstAttribute="top" secondItem="I3z-pW-6xi" secondAttribute="bottom" constant="14" id="IGS-9s-eA3"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="leading" secondItem="8bj-Au-Tnw" secondAttribute="leadingMargin" id="Oge-pb-8L8"/>
                             <constraint firstItem="yGs-iG-gw0" firstAttribute="top" secondItem="aGY-N3-kJp" secondAttribute="bottom" constant="13" id="Oig-mv-PD8"/>
                             <constraint firstAttribute="trailing" secondItem="ax1-Cq-ajQ" secondAttribute="trailing" id="SIl-ol-5Rb"/>
                             <constraint firstItem="yGs-iG-gw0" firstAttribute="leading" secondItem="E6w-Sj-3Fp" secondAttribute="leading" id="UPd-yL-Cuf"/>
                             <constraint firstItem="aGY-N3-kJp" firstAttribute="trailing" secondItem="yGs-iG-gw0" secondAttribute="trailing" id="W15-Tx-pZj"/>
                             <constraint firstItem="ax1-Cq-ajQ" firstAttribute="centerX" secondItem="yGs-iG-gw0" secondAttribute="centerX" id="d4j-HG-PBs"/>
+                            <constraint firstItem="ssy-OV-qtW" firstAttribute="trailing" secondItem="8bj-Au-Tnw" secondAttribute="trailingMargin" id="dKz-LF-CRe"/>
                             <constraint firstItem="F3z-mG-Jgm" firstAttribute="top" secondItem="E6w-Sj-3Fp" secondAttribute="bottom" constant="89" id="fQS-UB-JCP"/>
-                            <constraint firstItem="I3z-pW-6xi" firstAttribute="centerX" secondItem="aGY-N3-kJp" secondAttribute="centerX" id="gJV-SC-aPh"/>
-                            <constraint firstItem="aGY-N3-kJp" firstAttribute="top" secondItem="I3z-pW-6xi" secondAttribute="bottom" constant="14" id="iqi-2a-IpN"/>
+                            <constraint firstItem="I3z-pW-6xi" firstAttribute="top" secondItem="ssy-OV-qtW" secondAttribute="bottom" constant="8" id="gaq-JB-ySs"/>
                             <constraint firstItem="E6w-Sj-3Fp" firstAttribute="trailing" secondItem="F3z-mG-Jgm" secondAttribute="trailing" id="ojm-EG-aui"/>
+                            <constraint firstItem="ssy-OV-qtW" firstAttribute="leading" secondItem="8bj-Au-Tnw" secondAttribute="leadingMargin" id="pH7-hF-Twp"/>
                             <constraint firstItem="SoB-aQ-msD" firstAttribute="leading" secondItem="8bj-Au-Tnw" secondAttribute="leadingMargin" id="qBJ-Vd-Zve"/>
                             <constraint firstItem="ax1-Cq-ajQ" firstAttribute="top" secondItem="8bj-Au-Tnw" secondAttribute="top" id="tMB-D9-cPg"/>
                             <constraint firstItem="E6w-Sj-3Fp" firstAttribute="top" secondItem="yGs-iG-gw0" secondAttribute="bottom" constant="16" id="up3-f2-fUU"/>
@@ -407,10 +414,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage_U_2" width="1536" height="2048"/>
+        <image name="bg" width="1536" height="2048"/>
         <image name="list" width="32" height="32"/>
         <image name="map" width="32" height="32"/>
         <image name="pin" width="32" height="32"/>
+        <image name="udacity" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VyW-P4-NtF"/>
