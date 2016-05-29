@@ -21,7 +21,6 @@ class LoginViewController : UIViewController {
     @IBOutlet weak var messagesField: UILabel!
     
     // Local variables
-    var session: NSURLSession!
     
     // MARK: Life Cycle
     
@@ -45,20 +44,8 @@ class LoginViewController : UIViewController {
     
     @IBAction func login(sender: AnyObject) {
         if (usernameField.text != "" && passwordField.text != "") {
-            /* 1. Set the parameters */
-            
-            var username: String!
-            var password: String!
-            
-            if let optionalUsername = usernameField.text {
-                username = "\(optionalUsername)"
-            }
-            if let optionalPassword = passwordField.text {
-                password = "\(optionalPassword)"
-            }
-            
             /* 2. Get a session Id from udacity by using the user's login credentials */
-            getSessionID(username, password: password)
+            getSessionID(usernameField.text! as String, password: passwordField.text! as String)
         }
         else {
             messagesField.text = Constants.Messages.MissingUsernameAndPassword
@@ -66,7 +53,7 @@ class LoginViewController : UIViewController {
     }
     
     func getSessionID(username: String, password: String) {
-        /* 1/2. Build the URL, Configure the request */
+        /* Build the URL, Configure the request */
         let components = NSURLComponents()
         components.scheme = Constants.Udacity.ApiScheme
         components.host = Constants.Udacity.ApiHost
@@ -78,10 +65,9 @@ class LoginViewController : UIViewController {
         request.addValue(Constants.URLRequest.ApplicationTypeJSON, forHTTPHeaderField: Constants.URLRequest.ContentType)
         request.HTTPBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
         
-        /* 3. Make the request */
+        /* Make the request */
         let task = client.session.dataTaskWithRequest(request) { (data, response, error) in
-            
-            // if an error occurs, print it and re-enable the UI
+            /* if an error occurs, print it and re-enable the UI */
             func displayError(error: String, debugLabelText: String? = nil) {
                 print(error)
             }
@@ -104,7 +90,7 @@ class LoginViewController : UIViewController {
                 return;
             }
             
-            /* 4. Parse the data */
+            /* Parse the data */
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
             
             /* GUARD: Are the "photos" and "photo" keys in our result? */
@@ -134,15 +120,13 @@ class LoginViewController : UIViewController {
                     self.client.sessionID = registered
                     
                     let DateFormatter = NSDateFormatter()
-                    DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+                    DateFormatter.dateFormat = Constants.Dates.Format
                     self.client.sessionExpiration = DateFormatter.dateFromString(accountInformation[Constants.UdacitySessionResult.Expiration]! as! String)
                     
                     self.completeLogin()
                 }
             }
         }
-        
-        /* 5. Start the request */
         task.resume()
     }
     

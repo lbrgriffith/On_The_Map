@@ -25,6 +25,10 @@ struct Constants {
         static let Cancel = "Cancel"
     }
     
+    struct Dates {
+        static let Format = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+    }
+    
     // MARK: Input Entry
     struct ControlLabel {
         static let Submit = "Submit"
