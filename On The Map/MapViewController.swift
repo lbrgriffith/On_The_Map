@@ -11,12 +11,14 @@ import AddressBook
 import UIKit
 
 class MapViewController : UIViewController {
-    
     // MARK: Outlets and Properties
+    
     @IBOutlet var studentMap: MKMapView!
+    
+    // MARK: Properties
+    
     var client = UdacityClient.sharedInstance()
     var locations: [StudentLocation] = [StudentLocation]()
-    
     let regionRadius: CLLocationDistance = 1000
     
     // MARK: View Functions
@@ -106,7 +108,7 @@ extension MapViewController: MKMapViewDelegate {
             }
             
             /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= Constants.UdacitySessionResult.MinimumSuccessCode && statusCode <= Constants.UdacitySessionResult.MaximumSuccessCode else {
                 print(Constants.Messages.Not200)
                 return
             }

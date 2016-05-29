@@ -94,13 +94,13 @@ class LoginViewController : UIViewController {
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= Constants.UdacitySessionResult.MinimumSuccessCode && statusCode <= Constants.UdacitySessionResult.MaximumSuccessCode else {
-                displayError("Your request returned a status code other than 2xx!")
+                displayError(Constants.Messages.Not200)
                 return;
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
-                displayError("No data was returned by the request!")
+                displayError(Constants.Messages.NoData)
                 return;
             }
             
