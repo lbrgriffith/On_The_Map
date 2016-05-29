@@ -19,7 +19,6 @@
 		5DBF79291CE3F38D00DD9B2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DBF79271CE3F38D00DD9B2A /* LaunchScreen.storyboard */; };
 		5DBF79311CE3F6B700DD9B2A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBF79301CE3F6B700DD9B2A /* LoginViewController.swift */; };
 		5DC08A041CE54BF10059E39F /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC08A031CE54BF10059E39F /* UdacityClient.swift */; };
-		5DDEEB271CF1F0D700E99A98 /* UdacityAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDEEB261CF1F0D700E99A98 /* UdacityAppUser.swift */; };
 		5DF0C5021CF26FFE000C5CA1 /* StudentDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0C5011CF26FFE000C5CA1 /* StudentDetailController.swift */; };
 		5DF0C5071CF2732F000C5CA1 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DF0C5041CF2732F000C5CA1 /* Roboto-Medium.ttf */; };
 		5DF0C5081CF2732F000C5CA1 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DF0C5051CF2732F000C5CA1 /* Roboto-Regular.ttf */; };
@@ -41,7 +40,6 @@
 		5DBF792A1CE3F38D00DD9B2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DBF79301CE3F6B700DD9B2A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5DC08A031CE54BF10059E39F /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
-		5DDEEB261CF1F0D700E99A98 /* UdacityAppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAppUser.swift; sourceTree = "<group>"; };
 		5DF0C5011CF26FFE000C5CA1 /* StudentDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailController.swift; sourceTree = "<group>"; };
 		5DF0C5041CF2732F000C5CA1 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		5DF0C5051CF2732F000C5CA1 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 				5DC08A031CE54BF10059E39F /* UdacityClient.swift */,
 				5D84D85D1CE6948900DC84CA /* StudentInformation.swift */,
 				5D6695D31CE6B4B900C7C1EA /* Constants.swift */,
-				5DDEEB261CF1F0D700E99A98 /* UdacityAppUser.swift */,
 				5D28A98B1CF4FE8500AAA1EC /* StudentLocation.swift */,
 			);
 			name = Model;
@@ -208,7 +205,6 @@
 			files = (
 				5DC08A041CE54BF10059E39F /* UdacityClient.swift in Sources */,
 				5D28A98C1CF4FE8500AAA1EC /* StudentLocation.swift in Sources */,
-				5DDEEB271CF1F0D700E99A98 /* UdacityAppUser.swift in Sources */,
 				5DF0C5021CF26FFE000C5CA1 /* StudentDetailController.swift in Sources */,
 				5DBF79311CE3F6B700DD9B2A /* LoginViewController.swift in Sources */,
 				5D84D85E1CE6948900DC84CA /* StudentInformation.swift in Sources */,
