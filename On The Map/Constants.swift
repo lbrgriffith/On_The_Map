@@ -67,6 +67,7 @@ struct Constants {
         static let Expiration = "expiration"
         static let MinimumSuccessCode = 200
         static let MaximumSuccessCode = 299
+        static let Forbidden403 = 403
     }
     
     // MARK: Parse API Constants
@@ -95,14 +96,5 @@ struct Constants {
     struct Mapping {
         static let RadiusMultiplier = 2.0
         static let Identifier = "pin"
-    }
-    
-    // MARK: Selectors
-    
-    struct Selectors {
-        static let KeyboardWillShow: Selector = Selector("keyboardWillShow:")
-        static let KeyboardWillHide: Selector = Selector("keyboardWillHide:")
-        static let KeyboardDidShow: Selector = Selector("keyboardDidShow:")
-        static let KeyboardDidHide: Selector = Selector("keyboardDidHide:")
     }
 }

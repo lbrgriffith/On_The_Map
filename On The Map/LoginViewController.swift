@@ -20,8 +20,6 @@ class LoginViewController : UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var messagesField: UILabel!
     
-    // Local variables
-    
     // MARK: Life Cycle
     
     override func viewDidLoad() {
@@ -29,10 +27,10 @@ class LoginViewController : UIViewController {
         
         configureUI()
         
-        subscribeToNotification(UIKeyboardWillShowNotification, selector: Constants.Selectors.KeyboardWillShow)
-        subscribeToNotification(UIKeyboardWillHideNotification, selector: Constants.Selectors.KeyboardWillHide)
-        subscribeToNotification(UIKeyboardDidShowNotification, selector: Constants.Selectors.KeyboardDidShow)
-        subscribeToNotification(UIKeyboardDidHideNotification, selector: Constants.Selectors.KeyboardDidHide)
+        subscribeToNotification(UIKeyboardWillShowNotification, selector: #selector(LoginViewController.keyboardWillShow))
+        subscribeToNotification(UIKeyboardWillHideNotification, selector: #selector(LoginViewController.keyboardWillHide))
+        subscribeToNotification(UIKeyboardDidShowNotification, selector: #selector(LoginViewController.keyboardDidShow))
+        subscribeToNotification(UIKeyboardDidHideNotification, selector: #selector(LoginViewController.keyboardDidHide))
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -81,6 +79,22 @@ class LoginViewController : UIViewController {
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= Constants.UdacitySessionResult.MinimumSuccessCode && statusCode <= Constants.UdacitySessionResult.MaximumSuccessCode else {
                 displayError(Constants.Messages.Not200)
+                
+                let currentStatusCode = (response as? NSHTTPURLResponse)?.statusCode
+                
+                if (currentStatusCode == 403) {
+                    performUIUpdatesOnMain( {
+                        let controller = UIAlertController()
+                        controller.title = "Login Failed"
+                        controller.message = "Please check your username and password, then try again."
+                        // Dismiss the view controller after the user taps “ok”
+                        let okAction = UIAlertAction (title:"ok", style: UIAlertActionStyle.Default) {
+                            action in self.dismissViewControllerAnimated(true, completion: nil) }
+                        controller.addAction(okAction)
+                        self.presentViewController(controller, animated: true, completion:nil)
+                    })
+                }
+                
                 return;
             }
             
