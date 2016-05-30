@@ -121,7 +121,7 @@ class ListViewController : UITableViewController {
                 // Handle error…
                 return
             }
-            _ = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
+//            _ = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
             
             self.completeLogout()
         }
