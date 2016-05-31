@@ -17,6 +17,8 @@ struct Constants {
         static let NoData = "No data was returned by the request!"
         static let NoInternetTitle = "No Internet Connection"
         static let NoIntenetMessage = "Make sure your phone is connected to the Internet."
+        static let LocationNotFoundTitle = "Location Not Found"
+        static let LocationNotFoundMessage = "Please check the spelling and try again."
     }
     
     // MARK: Toolbar

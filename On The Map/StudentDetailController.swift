@@ -78,7 +78,7 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
                     self.actionButton.titleLabel?.textAlignment = NSTextAlignment.Center
                 } else {
                     // TODO: Display Message that place is not found.
-                    self.displayAlert("Location Not Found", message: "Please check the spelling and try again.")
+                    self.displayAlert(Constants.Messages.LocationNotFoundTitle, message: Constants.Messages.LocationNotFoundMessage)
                 }
             }
         } else {
