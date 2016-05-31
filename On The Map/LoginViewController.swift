@@ -89,7 +89,7 @@ class LoginViewController : UIViewController {
                 displayError(Constants.Messages.Not200)
                 
                 let currentStatusCode = (response as? NSHTTPURLResponse)?.statusCode
-                print(currentStatusCode)
+
                 if (currentStatusCode == Constants.UdacitySessionResult.Forbidden403) {
                     performUIUpdatesOnMain( {
                         self.displayAlert(Constants.Alert.LoginFailed, message: Constants.Alert.LoginFailedMessage)

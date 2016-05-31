@@ -180,12 +180,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qCU-kc-kSl">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qCU-kc-kSl">
+                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qCU-kc-kSl" firstAttribute="top" secondItem="JRd-B6-jNO" secondAttribute="bottom" constant="-44" id="5yp-XO-Ckl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qCU-kc-kSl" secondAttribute="trailing" constant="-20" id="Kya-hU-Dpo"/>
                             <constraint firstItem="mJO-0L-g4G" firstAttribute="top" secondItem="qCU-kc-kSl" secondAttribute="bottom" id="m8h-9s-miz"/>
                             <constraint firstItem="qCU-kc-kSl" firstAttribute="leading" secondItem="Mi8-nQ-K3K" secondAttribute="leadingMargin" constant="-20" id="r9L-LS-dOx"/>
@@ -421,6 +422,6 @@
         <image name="udacity" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VyW-P4-NtF"/>
+        <segue reference="KCC-hb-NS2"/>
     </inferredMetricsTieBreakers>
 </document>
