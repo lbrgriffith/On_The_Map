@@ -26,7 +26,6 @@ class LoginViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureUI()
         
         subscribeToNotification(UIKeyboardWillShowNotification, selector: #selector(LoginViewController.keyboardWillShow))
@@ -77,6 +76,18 @@ class LoginViewController : UIViewController {
             /* GUARD: Was there an error? */
             guard (error == nil) else {
                 displayError("There was an error with your request: \(error)")
+                if (error!.code == -1001) {
+                    performUIUpdatesOnMain( {
+                        let controller = UIAlertController()
+                        controller.title = "Internet Unavailable"
+                        controller.message = "Sorry, it appears that the Internet is not available."
+                        // Dismiss the view controller after the user taps “ok”
+                        let okAction = UIAlertAction (title:"OK", style: UIAlertActionStyle.Default) {
+                            action in self.dismissViewControllerAnimated(true, completion: nil) }
+                        controller.addAction(okAction)
+                        self.presentViewController(controller, animated: true, completion:nil)
+                    })
+                }
                 return;
             }
             
@@ -85,7 +96,7 @@ class LoginViewController : UIViewController {
                 displayError(Constants.Messages.Not200)
                 
                 let currentStatusCode = (response as? NSHTTPURLResponse)?.statusCode
-                
+                print(currentStatusCode)
                 if (currentStatusCode == 403) {
                     performUIUpdatesOnMain( {
                         let controller = UIAlertController()
