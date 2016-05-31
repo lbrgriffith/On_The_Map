@@ -36,14 +36,6 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.setHidesBackButton(true, animated:true)
-        
-        let backItem = UIBarButtonItem()
-        backItem.title = Constants.ToolBarLabel.Cancel
-        backItem.target = self
-        backItem.action = #selector(StudentDetailController.cancel)
-        navigationItem.rightBarButtonItem = backItem
-        
         QuestionPart1.font = UIFont(name: Constants.FontFace.RobotoThin, size: Constants.FontFace.RobotoDetailSize)
         QuestionPart2.font = UIFont(name: Constants.FontFace.RobotoMedium, size: Constants.FontFace.RobotoDetailSize)
         QuestionPart3.font = UIFont(name: Constants.FontFace.RobotoThin, size: Constants.FontFace.RobotoDetailSize)
@@ -66,10 +58,10 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
                     self.latitude = (firstPlacemark.location?.coordinate.latitude)!
                     self.longitude = (firstPlacemark.location?.coordinate.longitude)!
                     
-                    let newYorkLocation = CLLocationCoordinate2DMake(self.latitude, self.longitude)
+                    let newLocation = CLLocationCoordinate2DMake(self.latitude, self.longitude)
                     // Drop a pin
                     let dropPin = MKPointAnnotation()
-                    dropPin.coordinate = newYorkLocation
+                    dropPin.coordinate = newLocation
                     dropPin.title = self.location.text!
                     // Show the map
                     self.displayMap.hidden = false
@@ -85,10 +77,13 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
                     
                     self.actionButton.setTitle(Constants.ControlLabel.Submit, forState: UIControlState.Normal)
                     self.actionButton.titleLabel?.textAlignment = NSTextAlignment.Center
+                } else {
+                    // TODO: Display Message that place is not found.
+                    self.displayAlert("Location Not Found", message: "Please check the spelling and try again.")
                 }
             }
         } else {
-            // TODO: Submit to the service
+            // Submit to the service
             let components = NSURLComponents()
             components.scheme = Constants.Parse.ApiScheme
             components.host = Constants.Parse.ApiHost
@@ -142,6 +137,17 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
     }
     
     // MARK: Methods
+    
+    func displayAlert(title: String, message: String) {
+        let controller = UIAlertController()
+        controller.title = title
+        controller.message = message
+        // Dismiss the view controller after the user taps “ok”
+        let okAction = UIAlertAction (title:Constants.Alert.ButtonText, style: UIAlertActionStyle.Default) {
+            action in self.dismissViewControllerAnimated(true, completion: nil) }
+        controller.addAction(okAction)
+        self.presentViewController(controller, animated: true, completion:nil)
+    }
     
     func cancel() {
         navigationController?.popToRootViewControllerAnimated(true)
