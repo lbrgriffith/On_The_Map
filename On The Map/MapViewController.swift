@@ -7,7 +7,6 @@
 //
 
 import MapKit
-import AddressBook
 import UIKit
 
 class MapViewController : UIViewController {
