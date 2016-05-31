@@ -20,7 +20,6 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var displayMap: MKMapView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var blueBackground: UILabel!
-    
     @IBOutlet weak var urlTextField: UITextField!
     
     // MARK: Properties

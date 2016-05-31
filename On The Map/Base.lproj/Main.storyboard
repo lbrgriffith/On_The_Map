@@ -393,13 +393,13 @@
                             <constraint firstItem="tA2-vr-8aD" firstAttribute="centerX" secondItem="CoV-O0-x6t" secondAttribute="centerX" id="yJZ-4o-GOc"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="QuestionPart1" destination="462-JO-kk5" id="NHr-Sy-IT9"/>
                         <outlet property="QuestionPart2" destination="rY4-uj-YWO" id="0Md-ri-ouc"/>
                         <outlet property="QuestionPart3" destination="hMB-EU-dta" id="Yf4-5j-nSD"/>
                         <outlet property="actionButton" destination="tA2-vr-8aD" id="ons-43-mto"/>
-                        <outlet property="back" destination="9KM-kg-33b" id="NwV-IW-lnE"/>
                         <outlet property="blueBackground" destination="CoV-O0-x6t" id="8Rd-JM-SoM"/>
                         <outlet property="displayMap" destination="oea-4A-CM0" id="TDP-ei-HMn"/>
                         <outlet property="location" destination="QjB-nu-8SU" id="SmY-ST-5nL"/>
@@ -438,6 +438,6 @@
         <image name="udacity" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KCC-hb-NS2"/>
+        <segue reference="VyW-P4-NtF"/>
     </inferredMetricsTieBreakers>
 </document>
