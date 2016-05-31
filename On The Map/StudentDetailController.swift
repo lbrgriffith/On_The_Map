@@ -53,6 +53,10 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
     
     // MARK: Actions
     
+    @IBAction func back(sender: AnyObject) {
+        cancel()
+    }
+    
     @IBAction func findOnTheMap(sender: UIButton) {
         let geocoder = CLGeocoder()
         
