@@ -312,7 +312,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoV-O0-x6t">
-                                <rect key="frame" x="0.0" y="315" width="600" height="184"/>
+                                <rect key="frame" x="0.0" y="315" width="600" height="151"/>
                                 <color key="backgroundColor" red="0.3924425782" green="0.70320751429999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -382,7 +382,7 @@
                             <constraint firstItem="CoV-O0-x6t" firstAttribute="leading" secondItem="QjB-nu-8SU" secondAttribute="leading" id="ekZ-8I-z0y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oea-4A-CM0" secondAttribute="trailing" constant="-20" id="iEu-LM-hhC"/>
                             <constraint firstItem="QsJ-wZ-cNs" firstAttribute="top" secondItem="AZy-M0-t5Z" secondAttribute="bottom" constant="8" id="l6U-xO-itl"/>
-                            <constraint firstItem="tA2-vr-8aD" firstAttribute="top" secondItem="CoV-O0-x6t" secondAttribute="bottom" constant="-17" id="oti-eH-k4s"/>
+                            <constraint firstItem="tA2-vr-8aD" firstAttribute="top" secondItem="CoV-O0-x6t" secondAttribute="bottom" constant="16" id="oti-eH-k4s"/>
                             <constraint firstItem="CoV-O0-x6t" firstAttribute="trailing" secondItem="QjB-nu-8SU" secondAttribute="trailing" id="rKP-40-403"/>
                             <constraint firstItem="oHP-Wy-25L" firstAttribute="top" secondItem="JTl-MZ-yfn" secondAttribute="top" id="ra0-wi-aE9"/>
                             <constraint firstItem="9eA-j0-Vek" firstAttribute="top" secondItem="tA2-vr-8aD" secondAttribute="bottom" constant="88" id="u9c-XA-YQi"/>
