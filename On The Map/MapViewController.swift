@@ -128,6 +128,16 @@ extension MapViewController: MKMapViewDelegate {
             /* GUARD: Was there an error? */
             guard (error == nil) else {
                 displayError("There was an error with your request: \(error)")
+                if (error!.code == Constants.UdacitySessionResult.NetworkErrorCode) {
+                    performUIUpdatesOnMain( {
+                        self.displayAlert(Constants.Alert.InternetUnavailable, message:
+                            Constants.Alert.InternetUnavailableMessage)
+                    })
+                } else {
+                    performUIUpdatesOnMain({
+                        self.displayAlert(Constants.Alert.LogOutFailedTitle, message: error!.localizedFailureReason!)
+                    })
+                }
                 return;
             }
             
@@ -167,6 +177,7 @@ extension MapViewController: MKMapViewDelegate {
                     let dropPin = MKPointAnnotation()
                     dropPin.coordinate = Coordinate
                     dropPin.title = "\(studentlocation.firstName) \(studentlocation.lastName)"
+                        dropPin.subtitle = studentlocation.mediaURL as String
                     self.studentMap.addAnnotation(dropPin)})
                 }
             }
