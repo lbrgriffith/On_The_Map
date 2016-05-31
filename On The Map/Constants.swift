@@ -80,6 +80,8 @@ struct Constants {
         static let ApiPath = "/1/classes/StudentLocation"
         static let LimitValue = "100"
         static let LimitKey = "limit"
+        static let OrderQueryName = "order"
+        static let OrderQueryValue = "-updatedAt"
         static let ApplicationIDHTTPHeader = "X-Parse-Application-Id"
         static let ApplicationID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
         static let RESTAPIHTTPHeader = "X-Parse-REST-API-Key"

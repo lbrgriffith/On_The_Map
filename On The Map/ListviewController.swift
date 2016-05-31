@@ -50,6 +50,8 @@ class ListViewController : UITableViewController {
         components.queryItems = [NSURLQueryItem]()
         let queryItem = NSURLQueryItem(name: Constants.Parse.LimitKey, value: Constants.Parse.LimitValue)
         components.queryItems!.append(queryItem)
+        let orderItem = NSURLQueryItem(name: Constants.Parse.OrderQueryName, value:Constants.Parse.OrderQueryValue)
+        components.queryItems!.append(orderItem)
         let request = NSMutableURLRequest(URL: components.URL!)
         
         request.addValue(Constants.Parse.ApplicationID, forHTTPHeaderField: Constants.Parse.ApplicationIDHTTPHeader)
