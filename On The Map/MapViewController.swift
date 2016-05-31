@@ -48,19 +48,29 @@ class MapViewController : UIViewController {
         request.HTTPMethod = Constants.URLRequest.MethodDELETE
         var xsrfCookie: NSHTTPCookie? = nil
         let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        
         for cookie in sharedCookieStorage.cookies! {
             if cookie.name == Constants.URLRequest.CookieName { xsrfCookie = cookie }
         }
+        
         if let xsrfCookie = xsrfCookie {
             request.setValue(xsrfCookie.value, forHTTPHeaderField: Constants.URLRequest.CookieName)
         }
+        
         let task = client.session.dataTaskWithRequest(request) { data, response, error in
             if error != nil {
-                // Handle error…
+                if (error!.code == Constants.UdacitySessionResult.NetworkErrorCode) {
+                    performUIUpdatesOnMain( {
+                        self.displayAlert(Constants.Alert.InternetUnavailable, message:
+                            Constants.Alert.InternetUnavailableMessage)
+                    })
+                } else {
+                performUIUpdatesOnMain({
+                    self.displayAlert(Constants.Alert.LogOutFailedTitle, message: error!.localizedFailureReason!)
+                    })
+                }
                 return
             }
-            //let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5)) /* subset response data! */
-            //print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             
             self.completeLogout()
         }
@@ -68,11 +78,24 @@ class MapViewController : UIViewController {
         task.resume()
     }
     
+    // MARK: Methods
+    
     private func completeLogout() {
         performUIUpdatesOnMain {
             let nextViewController = self.storyboard!.instantiateViewControllerWithIdentifier("LoginView") as UIViewController
             self.presentViewController(nextViewController, animated:true, completion:nil)
         }
+    }
+    
+    func displayAlert(title: String, message: String) {
+        let controller = UIAlertController()
+        controller.title = title
+        controller.message = message
+        // Dismiss the view controller after the user taps “ok”
+        let okAction = UIAlertAction (title:Constants.Alert.ButtonText, style: UIAlertActionStyle.Default) {
+            action in self.dismissViewControllerAnimated(true, completion: nil) }
+        controller.addAction(okAction)
+        self.presentViewController(controller, animated: true, completion:nil)
     }
 }
 
@@ -111,6 +134,13 @@ extension MapViewController: MKMapViewDelegate {
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= Constants.UdacitySessionResult.MinimumSuccessCode && statusCode <= Constants.UdacitySessionResult.MaximumSuccessCode else {
                 print(Constants.Messages.Not200)
+                let currentStatusCode = ((response as? NSHTTPURLResponse)?.statusCode)! as Int
+                
+                if (currentStatusCode == Constants.Parse.NetworkErrorCode) {
+                    performUIUpdatesOnMain({
+                        self.displayAlert(Constants.Alert.InternetUnavailable, message: Constants.Alert.InternetUnavailableMessage)
+                    })
+                }
                 return
             }
             

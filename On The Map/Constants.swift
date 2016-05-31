@@ -42,6 +42,7 @@ struct Constants {
         static let InternetUnavailableMessage = "Sorry, it appears that the Internet is not available."
         static let LoginFailed = "Login Failed"
         static let LoginFailedMessage = "Please check your username and password, then try again."
+        static let LogOutFailedTitle = "Could Not Log Out"
     }
     
     // MARK: General
@@ -96,6 +97,7 @@ struct Constants {
         static let ApplicationID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
         static let RESTAPIHTTPHeader = "X-Parse-REST-API-Key"
         static let RESTAPIKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+        static let NetworkErrorCode = 401
     }
     
     // MARK: Fonts
