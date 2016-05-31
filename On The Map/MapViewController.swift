@@ -171,17 +171,42 @@ extension MapViewController: MKMapViewDelegate {
                 let StudentLocations = StudentLocation.locationsFromResults(parsedData)
                 for studentlocation in StudentLocations {
                     performUIUpdatesOnMain({
-                    let Coordinate = CLLocationCoordinate2DMake(studentlocation.latitude as CLLocationDegrees, studentlocation.longitude as CLLocationDegrees)
-                    // Drop a pin
-                    let dropPin = MKPointAnnotation()
-                    dropPin.coordinate = Coordinate
-                    dropPin.title = "\(studentlocation.firstName) \(studentlocation.lastName)"
+                        let Coordinate = CLLocationCoordinate2DMake(studentlocation.latitude as CLLocationDegrees, studentlocation.longitude as CLLocationDegrees)
+                        // Drop a pin
+                        let dropPin = MKPointAnnotation()
+                        dropPin.coordinate = Coordinate
+                        dropPin.title = "\(studentlocation.firstName) \(studentlocation.lastName)"
                         dropPin.subtitle = studentlocation.mediaURL as String
-                    self.studentMap.addAnnotation(dropPin)})
+                        self.studentMap.addAnnotation(dropPin)
+                    })
                 }
             }
         }
         
         task.resume()
+    }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let location = view.annotation
+        let Subtitle: String = String(location!.subtitle! as String!)
+        let Url = NSURL(string: Subtitle)
+        
+        UIApplication.sharedApplication().openURL(Url!)
+    }
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(Constants.Mapping.Identifier)
+            
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: Constants.Mapping.Identifier)
+                annotationView!.canShowCallout = true
+                
+                let btn = UIButton(type: .DetailDisclosure)
+                annotationView!.rightCalloutAccessoryView = btn
+            } else {
+                annotationView!.annotation = annotation
+            }
+            
+            return annotationView
     }
 }
