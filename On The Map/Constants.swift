@@ -36,6 +36,14 @@ struct Constants {
         static let Submit = "Submit"
     }
     
+    struct Alert {
+        static let ButtonText = "OK"
+        static let InternetUnavailable = "Internet Unavailable"
+        static let InternetUnavailableMessage = "Sorry, it appears that the Internet is not available."
+        static let LoginFailed = "Login Failed"
+        static let LoginFailedMessage = "Please check your username and password, then try again."
+    }
+    
     // MARK: General
     
     struct URLRequest {
@@ -61,6 +69,7 @@ struct Constants {
     // MARK: Udacity Parameter Keys
     
     struct UdacitySessionResult {
+        static let Skip = 5
         static let Account = "account"
         static let Registered = "registered"
         static let Key = "key"
@@ -70,6 +79,7 @@ struct Constants {
         static let MinimumSuccessCode = 200
         static let MaximumSuccessCode = 299
         static let Forbidden403 = 403
+        static let NetworkErrorCode = -1001
     }
     
     // MARK: Parse API Constants

@@ -75,41 +75,26 @@ class LoginViewController : UIViewController {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                displayError("There was an error with your request: \(error)")
-                if (error!.code == -1001) {
+                if (error!.code == Constants.UdacitySessionResult.NetworkErrorCode) {
                     performUIUpdatesOnMain( {
-                        let controller = UIAlertController()
-                        controller.title = "Internet Unavailable"
-                        controller.message = "Sorry, it appears that the Internet is not available."
-                        // Dismiss the view controller after the user taps “ok”
-                        let okAction = UIAlertAction (title:"OK", style: UIAlertActionStyle.Default) {
-                            action in self.dismissViewControllerAnimated(true, completion: nil) }
-                        controller.addAction(okAction)
-                        self.presentViewController(controller, animated: true, completion:nil)
+                        self.displayAlert(Constants.Alert.InternetUnavailable, message:
+                        Constants.Alert.InternetUnavailableMessage)
                     })
                 }
                 return;
             }
             
-            /* GUARD: Did we get a successful 2XX response? */
+            /* GUARD: Did we get a response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= Constants.UdacitySessionResult.MinimumSuccessCode && statusCode <= Constants.UdacitySessionResult.MaximumSuccessCode else {
                 displayError(Constants.Messages.Not200)
                 
                 let currentStatusCode = (response as? NSHTTPURLResponse)?.statusCode
                 print(currentStatusCode)
-                if (currentStatusCode == 403) {
+                if (currentStatusCode == Constants.UdacitySessionResult.Forbidden403) {
                     performUIUpdatesOnMain( {
-                        let controller = UIAlertController()
-                        controller.title = "Login Failed"
-                        controller.message = "Please check your username and password, then try again."
-                        // Dismiss the view controller after the user taps “ok”
-                        let okAction = UIAlertAction (title:"ok", style: UIAlertActionStyle.Default) {
-                            action in self.dismissViewControllerAnimated(true, completion: nil) }
-                        controller.addAction(okAction)
-                        self.presentViewController(controller, animated: true, completion:nil)
+                        self.displayAlert(Constants.Alert.LoginFailed, message: Constants.Alert.LoginFailedMessage)
                     })
                 }
-                
                 return;
             }
             
@@ -119,8 +104,8 @@ class LoginViewController : UIViewController {
                 return;
             }
             
-            /* Parse the data */
-            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+            /* Parse the data - subset response data! */
+            let newData = data.subdataWithRange(NSMakeRange(Constants.UdacitySessionResult.Skip, data.length - Constants.UdacitySessionResult.Skip))
             
             /* GUARD: Are the "photos" and "photo" keys in our result? */
             let parsedResult: AnyObject!
@@ -259,6 +244,17 @@ extension LoginViewController {
     @IBAction func userDidTapView(sender: AnyObject) {
         resignIfFirstResponder(usernameField)
         resignIfFirstResponder(passwordField)
+    }
+    
+    func displayAlert(title: String, message: String) {
+        let controller = UIAlertController()
+        controller.title = title
+        controller.message = message
+        // Dismiss the view controller after the user taps “ok”
+        let okAction = UIAlertAction (title:Constants.Alert.ButtonText, style: UIAlertActionStyle.Default) {
+            action in self.dismissViewControllerAnimated(true, completion: nil) }
+        controller.addAction(okAction)
+        self.presentViewController(controller, animated: true, completion:nil)
     }
 }
 
