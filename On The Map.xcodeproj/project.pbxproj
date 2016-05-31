@@ -13,6 +13,7 @@
 		5D28A98C1CF4FE8500AAA1EC /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D28A98B1CF4FE8500AAA1EC /* StudentLocation.swift */; };
 		5D38447A1CE894B300414118 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3844791CE894B300414118 /* GCDBlackBox.swift */; };
 		5D6695D41CE6B4B900C7C1EA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6695D31CE6B4B900C7C1EA /* Constants.swift */; };
+		5D6EC34E1CFE54D00019166B /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6EC34D1CFE54D00019166B /* StudentLocations.swift */; };
 		5DBF791F1CE3F38D00DD9B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBF791E1CE3F38D00DD9B2A /* AppDelegate.swift */; };
 		5DBF79241CE3F38D00DD9B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DBF79221CE3F38D00DD9B2A /* Main.storyboard */; };
 		5DBF79261CE3F38D00DD9B2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DBF79251CE3F38D00DD9B2A /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		5D28A98B1CF4FE8500AAA1EC /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		5D3844791CE894B300414118 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		5D6695D31CE6B4B900C7C1EA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5D6EC34D1CFE54D00019166B /* StudentLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
 		5DBF791B1CE3F38D00DD9B2A /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DBF791E1CE3F38D00DD9B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DBF79231CE3F38D00DD9B2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				5D6695D31CE6B4B900C7C1EA /* Constants.swift */,
 				5D28A98B1CF4FE8500AAA1EC /* StudentLocation.swift */,
 				5D0D886A1CFD2B6400AEE8F1 /* StudentAnnotation.swift */,
+				5D6EC34D1CFE54D00019166B /* StudentLocations.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				5DC08A041CE54BF10059E39F /* UdacityClient.swift in Sources */,
 				5D28A98C1CF4FE8500AAA1EC /* StudentLocation.swift in Sources */,
 				5DF0C5021CF26FFE000C5CA1 /* StudentDetailController.swift in Sources */,
+				5D6EC34E1CFE54D00019166B /* StudentLocations.swift in Sources */,
 				5DBF79311CE3F6B700DD9B2A /* LoginViewController.swift in Sources */,
 				5DBF791F1CE3F38D00DD9B2A /* AppDelegate.swift in Sources */,
 				5D6695D41CE6B4B900C7C1EA /* Constants.swift in Sources */,

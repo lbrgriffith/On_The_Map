@@ -17,7 +17,6 @@ class MapViewController : UIViewController {
     // MARK: Properties
     
     var client = UdacityClient.sharedInstance()
-    var locations: [StudentLocation] = [StudentLocation]()
     
     // MARK: View Functions
     
@@ -168,8 +167,8 @@ extension MapViewController: MKMapViewDelegate {
             }
             
             if let parsedData = parsedResult["results"] as? [[String:AnyObject]] {
-                let StudentLocations = StudentLocation.locationsFromResults(parsedData)
-                for studentlocation in StudentLocations {
+                StudentLocations.RetrievedStudentLocations = StudentLocation.locationsFromResults(parsedData)
+                for studentlocation in StudentLocations.RetrievedStudentLocations {
                     performUIUpdatesOnMain({
                         let Coordinate = CLLocationCoordinate2DMake(studentlocation.latitude as CLLocationDegrees, studentlocation.longitude as CLLocationDegrees)
                         // Drop a pin

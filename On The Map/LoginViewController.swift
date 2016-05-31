@@ -68,11 +68,8 @@ class LoginViewController : UIViewController {
         request.HTTPBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
         
         // Check if connected to the network before request.
-        if LoginViewController.isConnectedToNetwork() == true {
-            print("Internet connection - Available")
-        } else {
-            print("Internet connection - Not Available")
-            displayAlert("No Internet Connection", message: "Make sure your phone is connected to the internet.")
+        if LoginViewController.isConnectedToNetwork() == false {
+            displayAlert(Constants.Messages.NoInternetTitle, message: Constants.Messages.NoIntenetMessage)
         }
         
         /* Make the request */

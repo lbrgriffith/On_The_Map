@@ -110,6 +110,8 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
                 /* GUARD: Did we get a successful 2XX response? */
                 guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= Constants.UdacitySessionResult.MinimumSuccessCode && statusCode <= Constants.UdacitySessionResult.MaximumSuccessCode else {
                     displayError(Constants.Messages.Not200)
+                    let code = (response as? NSHTTPURLResponse)?.statusCode
+                    displayError(String(code))
                     return;
                 }
                 

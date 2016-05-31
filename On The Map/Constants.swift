@@ -15,6 +15,8 @@ struct Constants {
         static let MissingUsernameAndPassword = "You must enter both username and password!"
         static let Not200 = "Your request returned a status code other than 2xx!"
         static let NoData = "No data was returned by the request!"
+        static let NoInternetTitle = "No Internet Connection"
+        static let NoIntenetMessage = "Make sure your phone is connected to the Internet."
     }
     
     // MARK: Toolbar
@@ -106,7 +108,7 @@ struct Constants {
         static let RobotoThin = "Roboto-Thin"
         static let RobotoNormal = "Roboto-Regular"
         static let RobotoMedium = "Roboto-Medium"
-        static let RobotoDetailSize: CGFloat = 22
+        static let RobotoDetailSize: CGFloat = 25
     }
     
     // MARK: Maps

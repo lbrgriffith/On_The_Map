@@ -17,7 +17,6 @@ class ListViewController : UITableViewController {
     // MARK: Properties
     
     var client = UdacityClient.sharedInstance()
-    var locations: [StudentLocation] = [StudentLocation]()
     
     // MARK: Lifecycle
     
@@ -89,7 +88,7 @@ class ListViewController : UITableViewController {
             /* 5. Parse the data */
             
             if let results = parsedResult["results"] as? [[String:AnyObject]] {
-                self.locations = self.locationsFromResults(results)
+                StudentLocations.RetrievedStudentLocations = self.locationsFromResults(results)
             }
             
             /* 6. Use the data! */
@@ -145,7 +144,7 @@ extension ListViewController {
         
         // get cell type
         let cellReuseIdentifier = "locationTableViewCell"
-        let location = locations[indexPath.row]
+        let location = StudentLocations.RetrievedStudentLocations[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
         
         // set cell defaults
@@ -170,11 +169,11 @@ extension ListViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
+        return StudentLocations.RetrievedStudentLocations.count
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let url = NSURL(string: locations[indexPath.row].mediaURL!)
+        let url = NSURL(string: StudentLocations.RetrievedStudentLocations[indexPath.row].mediaURL!)
         UIApplication.sharedApplication().openURL(url!)
     }
 }
