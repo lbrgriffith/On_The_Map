@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SystemConfiguration
 
 class LoginViewController : UIViewController {
     
@@ -65,6 +66,14 @@ class LoginViewController : UIViewController {
         request.addValue(Constants.URLRequest.ApplicationTypeJSON, forHTTPHeaderField: Constants.URLRequest.Accept)
         request.addValue(Constants.URLRequest.ApplicationTypeJSON, forHTTPHeaderField: Constants.URLRequest.ContentType)
         request.HTTPBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
+        
+        // Check if connected to the network before request.
+        if LoginViewController.isConnectedToNetwork() == true {
+            print("Internet connection - Available")
+        } else {
+            print("Internet connection - Not Available")
+            displayAlert("No Internet Connection", message: "Make sure your phone is connected to the internet.")
+        }
         
         /* Make the request */
         let task = client.session.dataTaskWithRequest(request) { (data, response, error) in
@@ -169,6 +178,26 @@ class LoginViewController : UIViewController {
         components.host = Constants.Udacity.ApiHost
         components.path = Constants.Udacity.Registration
         UIApplication.sharedApplication().openURL(components.URL!)
+    }
+    
+    class func isConnectedToNetwork() -> Bool {
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(&zeroAddress) {
+            SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, UnsafePointer($0))
+        }
+        
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
+        
+        let isReachable = flags == .Reachable
+        let needsConnection = flags == .ConnectionRequired
+        
+        return isReachable && !needsConnection
     }
 }
 
