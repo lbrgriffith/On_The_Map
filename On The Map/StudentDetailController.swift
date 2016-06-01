@@ -77,7 +77,7 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
                     self.actionButton.setTitle(Constants.ControlLabel.Submit, forState: UIControlState.Normal)
                     self.actionButton.titleLabel?.textAlignment = NSTextAlignment.Center
                 } else {
-                    // TODO: Display Message that place is not found.
+                    // Display Message that place is not found.
                     self.displayAlert(Constants.Messages.LocationNotFoundTitle, message: Constants.Messages.LocationNotFoundMessage)
                 }
             }
@@ -110,8 +110,6 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
                 /* GUARD: Did we get a successful 2XX response? */
                 guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= Constants.UdacitySessionResult.MinimumSuccessCode && statusCode <= Constants.UdacitySessionResult.MaximumSuccessCode else {
                     displayError(Constants.Messages.Not200)
-                    let code = (response as? NSHTTPURLResponse)?.statusCode
-                    displayError(String(code))
                     return;
                 }
                 
@@ -130,7 +128,7 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
                 }
                 
                 performUIUpdatesOnMain({
-                    self.navigationController?.popToRootViewControllerAnimated(true)
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 })
             }
             task.resume()
@@ -151,7 +149,7 @@ class StudentDetailController : UIViewController, CLLocationManagerDelegate {
     }
     
     func cancel() {
-        navigationController?.popToRootViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func getPublicUserData(userId: String)

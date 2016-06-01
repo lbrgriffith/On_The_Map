@@ -288,6 +288,16 @@
                             <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oea-4A-CM0">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter your location here..." placeholder="Enter your location here..." textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QjB-nu-8SU">
+                                <rect key="frame" x="0.0" y="263" width="600" height="52"/>
+                                <color key="backgroundColor" red="0.39244257823748518" green="0.70320751427392225" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="7bV-gk-otJ"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JTl-MZ-yfn">
                                 <rect key="frame" x="0.0" y="72" width="600" height="191"/>
                                 <subviews>
@@ -312,7 +322,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoV-O0-x6t">
-                                <rect key="frame" x="0.0" y="315" width="600" height="151"/>
+                                <rect key="frame" x="0.0" y="315" width="600" height="131"/>
                                 <color key="backgroundColor" red="0.3924425782" green="0.70320751429999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -348,16 +358,10 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter your location here..." placeholder="Enter your location here..." textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QjB-nu-8SU">
-                                <rect key="frame" x="0.0" y="263" width="600" height="52"/>
-                                <color key="backgroundColor" red="0.39244257823748518" green="0.70320751427392225" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="7bV-gk-otJ"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xwC-fG-jin">
+                                <rect key="frame" x="282" y="445" width="37" height="37"/>
+                                <color key="color" red="1" green="0.054053062847840172" blue="0.04298253900025939" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -365,8 +369,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="JTl-MZ-yfn" secondAttribute="trailing" constant="-20" id="0XY-k7-Pzf"/>
                             <constraint firstItem="JTl-MZ-yfn" firstAttribute="leading" secondItem="7qS-Df-0ID" secondAttribute="leadingMargin" constant="-20" id="1lb-iG-FLc"/>
                             <constraint firstItem="oea-4A-CM0" firstAttribute="top" secondItem="7qS-Df-0ID" secondAttribute="topMargin" id="2gy-kL-qqY"/>
+                            <constraint firstItem="xwC-fG-jin" firstAttribute="leading" secondItem="7qS-Df-0ID" secondAttribute="leadingMargin" constant="262" id="3Vx-Fh-YAd"/>
                             <constraint firstItem="oea-4A-CM0" firstAttribute="top" secondItem="oHP-Wy-25L" secondAttribute="bottom" constant="-201" id="4Vf-oV-KOu"/>
+                            <constraint firstItem="xwC-fG-jin" firstAttribute="top" secondItem="CoV-O0-x6t" secondAttribute="bottom" constant="-1" id="6TD-b4-puf"/>
                             <constraint firstItem="QjB-nu-8SU" firstAttribute="top" secondItem="JTl-MZ-yfn" secondAttribute="bottom" id="A6s-hq-qdG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xwC-fG-jin" secondAttribute="trailing" constant="261" id="DzI-Xh-fRr"/>
                             <constraint firstItem="QjB-nu-8SU" firstAttribute="top" secondItem="oHP-Wy-25L" secondAttribute="bottom" constant="62" id="EJm-QS-Q0T"/>
                             <constraint firstItem="QsJ-wZ-cNs" firstAttribute="trailing" secondItem="oHP-Wy-25L" secondAttribute="trailing" id="NsK-55-tye"/>
                             <constraint firstItem="JTl-MZ-yfn" firstAttribute="top" secondItem="AZy-M0-t5Z" secondAttribute="bottom" constant="52" id="PCv-9L-pJ9"/>
@@ -380,9 +387,10 @@
                             <constraint firstItem="oHP-Wy-25L" firstAttribute="leading" secondItem="7qS-Df-0ID" secondAttribute="leadingMargin" constant="-20" id="ZCa-hV-zEB"/>
                             <constraint firstItem="oea-4A-CM0" firstAttribute="leading" secondItem="7qS-Df-0ID" secondAttribute="leadingMargin" constant="-20" id="bHd-9p-7s8"/>
                             <constraint firstItem="CoV-O0-x6t" firstAttribute="leading" secondItem="QjB-nu-8SU" secondAttribute="leading" id="ekZ-8I-z0y"/>
+                            <constraint firstItem="tA2-vr-8aD" firstAttribute="top" secondItem="xwC-fG-jin" secondAttribute="bottom" id="gfC-Q3-Jm5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oea-4A-CM0" secondAttribute="trailing" constant="-20" id="iEu-LM-hhC"/>
                             <constraint firstItem="QsJ-wZ-cNs" firstAttribute="top" secondItem="AZy-M0-t5Z" secondAttribute="bottom" constant="8" id="l6U-xO-itl"/>
-                            <constraint firstItem="tA2-vr-8aD" firstAttribute="top" secondItem="CoV-O0-x6t" secondAttribute="bottom" constant="16" id="oti-eH-k4s"/>
+                            <constraint firstItem="tA2-vr-8aD" firstAttribute="top" secondItem="CoV-O0-x6t" secondAttribute="bottom" constant="36" id="oti-eH-k4s"/>
                             <constraint firstItem="CoV-O0-x6t" firstAttribute="trailing" secondItem="QjB-nu-8SU" secondAttribute="trailing" id="rKP-40-403"/>
                             <constraint firstItem="oHP-Wy-25L" firstAttribute="top" secondItem="JTl-MZ-yfn" secondAttribute="top" id="ra0-wi-aE9"/>
                             <constraint firstItem="9eA-j0-Vek" firstAttribute="top" secondItem="tA2-vr-8aD" secondAttribute="bottom" constant="88" id="u9c-XA-YQi"/>
@@ -400,6 +408,7 @@
                         <outlet property="blueBackground" destination="CoV-O0-x6t" id="8Rd-JM-SoM"/>
                         <outlet property="displayMap" destination="oea-4A-CM0" id="TDP-ei-HMn"/>
                         <outlet property="location" destination="QjB-nu-8SU" id="SmY-ST-5nL"/>
+                        <outlet property="spinner" destination="xwC-fG-jin" id="74W-f5-fIW"/>
                         <outlet property="urlTextField" destination="oHP-Wy-25L" id="Wbi-AI-j15"/>
                     </connections>
                 </viewController>
